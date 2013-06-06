@@ -22,17 +22,14 @@
         <!-- TODO: use phonegap splashscreen or jq.ui's -->
         <!-- This is header at the top -->
         <div id="header" class="padded"> 
-            <a class="icon magnifier big pull-right"></a>
+            <a class="icon magnifier big pull-right" style="display:none"></a>
             <a class="icon basket big"></a>
         </div>
             <!-- The content div is where all your panels live. -->
         <div id="content"> 
             <!-- Panels are the individual pages/content area for your app -->
             <div ng-controller="MainCtrl" title="Asistan" id="main" class="panel padded" selected="true">
-
-            <ul>
-                <li ng-repeat="thing in awesomeThings">{{thing}}</li>
-            </ul>
+                
 
                  <h3>Hoşgeldiniz efendim</h3>
                 <p class="lead">Hesaplı bir alışveriş için size rehberlik etmeye hazırım.
@@ -64,18 +61,37 @@
                     </a></li>
                 </ul>
             </div>
+
+
+
+
+
+            <div ng-controller="TodoCtrl" title="Alışveriş Listesi" id="todo" class="panel">
+                <form ng-submit="addTodo()">
+                    <input type="text" ng-model="todoInput" class="jq-ui-forms"  size="30"placeholder="Ürünleri giriniz">
+                    <input type="submit" class="button" value="Ekle">
+                </form>
+                <ul id="prices">
+                    <li ng-repeat="todo in todos"><a>
+                        {{todo.text}} 
+                        <b id="close" class="icon close pull-right price" ng-click="removeTodo(todo)"></b>
+                    </a></li>
+                </ul>
+            </div>
+
+
+
+
         </div>
-
-
-
-
 
         
 
         <!-- The footer (bottom navbar).  Add additional tabs here
         The footer is a persistant navugation bar at the bottom -->
         <div id="navbar">
-            <a id="scan" class="icon camera" href="#results" data-transition="pop">OKU</a>
+            <a id="main" class="icon down" href="#main" data-transition="fade">İNDİRİM</a>
+            <a id="scan" class="icon camera" href="#results" data-transition="fade">OKU</a>
+            <a id="todo" class="icon pencil" href="#todo" data-transition="fade">LİSTE</a>
         </div>
 
     </div>

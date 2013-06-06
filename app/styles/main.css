@@ -79,3 +79,10 @@ ul .icon {
 #scan {
     font-weight: bold;
 }
+
+.icon.close:before {
+    padding: 0;
+}
+#backButton {
+display:none;
+}

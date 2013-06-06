@@ -16,5 +16,5 @@
   angular.bootstrap(document);  
   });
   }
-
+  $.ui.showBackbutton=false;
 
