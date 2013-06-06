@@ -75,10 +75,10 @@
                     <input type="submit" value="Ekle">
                 </form>
                 <span>Listenizde {{todos.length}} adet ürün bulunmaktadır</span>
-                <ul>
+                <ul id="prices">
                     <li ng-repeat="todo in todos">
                         <span>{{todo.text}}</span>
-                        [ <a href="" ng-click="removeTodo(index)">X</a> ]
+                        <button class="close pull-right price" ng-click="removeTodo(index)"> &times; </button>
                     </li>
                 </ul>
             </div>
