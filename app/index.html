@@ -74,11 +74,10 @@
                     <input type="text" ng-model="todoInput"  size="30"placeholder="Ürünleri giriniz">
                     <input type="submit" value="Ekle">
                 </form>
-                <span>Listenizde {{todos.length}} adet ürün bulunmaktadır</span>
                 <ul id="prices">
                     <li ng-repeat="todo in todos">
                         <span>{{todo.text}}</span>
-                        <button class="close pull-right price" ng-click="removeTodo(index)"> &times; </button>
+                        <b class="icon close pull-right price" ng-click="removeTodo(index)"></b>
                     </li>
                 </ul>
             </div>
@@ -93,7 +92,9 @@
         <!-- The footer (bottom navbar).  Add additional tabs here
         The footer is a persistant navugation bar at the bottom -->
         <div id="navbar">
-            <a id="scan" class="icon camera" href="#results" data-transition="pop">OKU</a>
+            <a id="main" class="icon camera" href="#main" data-transition="fade">OKU</a>
+            <a id="scan" class="icon camera" href="#results" data-transition="fade">OKU</a>
+            <a id="todo" class="icon pencil" href="#todo" data-transition="fade">LİSTE</a>
         </div>
 
     </div>
