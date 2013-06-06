@@ -64,11 +64,29 @@
                     </a></li>
                 </ul>
             </div>
+
+
+
+
+
+            <div ng-controller="TodoCtrl" title="Alışveriş Listesi" id="todo" class="panel">
+                <form ng-submit="addTodo()">
+                    <input type="text" ng-model="todoInput"  size="30"placeholder="Ürünleri giriniz">
+                    <input type="submit" value="Ekle">
+                </form>
+                <span>Listenizde {{todos.length}} adet ürün bulunmaktadır</span>
+                <ul>
+                    <li ng-repeat="todo in todos">
+                        <span>{{todo.text}}</span>
+                        [ <a href="" ng-click="removeTodo(index)">X</a> ]
+                    </li>
+                </ul>
+            </div>
+
+
+
+
         </div>
-
-
-
-
 
         
 
