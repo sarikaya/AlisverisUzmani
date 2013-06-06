@@ -41,21 +41,27 @@
 
             </div>
 
-            <div title="Sonuçlar" id="results" class="panel">
+
+
+
+
+
+            <div ng-controller="ProductCtrl" title="Sonuçlar" id="results" class="panel">
+
                 <div id="product" class="padded">
-                    <img id="productImage" src="main.jpg"/>
-                    <h4 id="productName">ÜLKER ÇİKOLATALI GOFRET 38 GR </h4>
+                    <img id="productImage" src={{productInfo.imageSrc}} />
+                    <h4 id="productName">{{productInfo.name}}</h4>
                     <p>  </p>
                 </div>
 
-                <div class="padded">
-
-                    <h3> Fiyatlar </h3>
-                </div>
+                <div class="padded"> <h3> Fiyatlar </h3> </div>
                 <ul id="prices">
-                    <li><a> BİM <i class="muted"> - Bulgurlu</i><i class="pull-right price">0.45 TL</i><b class="icon location big pull-right"></b></a></li>
-                    <li><a> A 101 <i class="muted"> - Bulgurlu</i><i class="pull-right price">0.45 TL</i></a></li>
-                    <li><a> Şok <i class="muted"> - Bulgurlu</i><i class="pull-right price">0.57 TL</i></a></li>
+                    <li ng-repeat="price in prices"><a>
+                       {{price.chainName}} 
+                       <i class="muted"> - {{price.branchName}}</i>
+                       <i class="pull-right price">{{price.price}} TL</i>
+                       <b ng-show="price.here" class="icon location big pull-right"></b>
+                    </a></li>
                 </ul>
             </div>
         </div>
@@ -84,6 +90,8 @@
     <!-- build:js scripts/scripts.js -->
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/Todo.js"></script>
+    <script src="scripts/controllers/Product.js"></script>
     <!-- endbuild -->
   </body>
 </html>
