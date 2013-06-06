@@ -1,10 +1,9 @@
 'use strict';
 
-angular.module('vagrantApp')
-  .controller('MainCtrl', function ($scope) {
+function MainCtrl($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-  });
+  }
