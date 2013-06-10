@@ -10,8 +10,16 @@ body {
 
 #jQUi .button {
     font-size: 16px;
+    min-width: 50px;
+    background-color: #08c;
 }
 
+#jQUi .button.selected {
+    border: 1px solid #666666;
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#9ddeff),color-stop(100%,#08c));
+    background-image: -webkit-linear-gradient(top,color-stop(0%,#9ddeff),color-stop(100%,#08c));
+    background-image: linear-gradient(to bottom,color-stop(0%,#9ddeff),color-stop(100%,#08c));
+}
 #jQUi .panel {
     background: #f5f5f5;
 }
