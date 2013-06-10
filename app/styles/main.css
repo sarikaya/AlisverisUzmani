@@ -4,6 +4,14 @@ body {
     padding-right: 0;
 }
 
+#jQUi {
+    font-size: 18px;
+}
+
+#jQUi .button {
+    font-size: 16px;
+}
+
 #jQUi .panel {
     background: #f5f5f5;
 }
@@ -22,11 +30,44 @@ body {
 }
 
 #jQUi #navbar a,
-.icon,
 #jQUi h1 {
     color:#FFFFFF;
     font-family: inherit;
     font-weight: bold;
+    height: 62px;
+}
+
+.icon, a:hover.icon, a:focus.icon{
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family:'FontAwesome' !important;   
+}
+
+#jQUi #navbar .icon:before {
+    color:inherit;
+    float:left;   
+    font-size: 32px;
+    text-align: center;
+    vertical-align:middle;
+    line-height:auto;
+}
+
+#jQUi #navbar .icon:before {
+    font-size:30px !important;
+    height:38px !important;
+    width:38px !important;
+}
+
+.icon.mini:before {
+    font-size:20px !important;
+    height:16px !important;
+    width:16px !important;
+}
+
+.icon.big:before { 
+    font-size:40px !important;
+    height:32px !important;
+    width:32px !important;
 }
 
 #jQUi h3,
