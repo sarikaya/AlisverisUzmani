@@ -67,7 +67,7 @@
             <div ng-controller="TodoCtrl" title="Alışveriş Listesi" id="todo" class="panel">
                 <form ng-submit="addTodo()">
                     <input type="text" ng-model="todoInput" class="jq-ui-forms"  size="30"placeholder="Ürünleri giriniz">
-                    <input type="submit" class="button" value="Ekle">
+                    <input type="submit" class="button pull-right" value="+">
                 </form>
                 <ul id="prices">
                     <li ng-repeat="todo in todos"><a>
