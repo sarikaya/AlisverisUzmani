@@ -1,20 +1,25 @@
 'use strict';
 
-
-    // Call onDeviceReady when Cordova is loaded.
-    //
-    // At this point, the document has loaded but cordova-2.3.0.js has not.
-    // When Cordova is loaded and talking with the native device,
-    // it will call the event `deviceready`.
-    //
-
-
-  document.addEventListener("deviceready", onDeviceReady, false);
-
-  function onDeviceReady() {
-  angular.element(document).ready(function(){
-  angular.bootstrap(document);  
+angular.module('asistanApp', [])
+  .config(function ($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
+      .when('/deals', {
+        templateUrl: 'views/deals.html',
+        controller: 'DealsCtrl'
+      })
+      .when('/product', {
+        templateUrl: 'views/product.html',
+        controller: 'ProductCtrl'
+      })
+      .when('/todo', {
+        templateUrl: 'views/todo.html',
+        controller: 'TodoCtrl'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
   });
-  }
-  $.ui.showBackbutton=false;
-

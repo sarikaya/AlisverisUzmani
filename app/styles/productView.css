@@ -1,0 +1,19 @@
+#productView #product {
+   height: 100px;
+}
+
+#productView #productImage {
+    border: 1px solid #000000;
+    height: 80px;
+    float: left;
+    margin: 10px 10px 10px 0;
+}
+
+#productView #productName {
+    height: 100px;
+    padding: 10px;
+}
+
+#productView .list .amount {
+    color: #08c;
+}
