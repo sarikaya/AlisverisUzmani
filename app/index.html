@@ -8,11 +8,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/main.css -->
-    <link rel="stylesheet" href="components/jqmobi/icons.css" /> 
+    <link rel="stylesheet" href="components/font-awesome/font-awesome.css" />
     <link rel="stylesheet" href="components/jqmobi/jq.ui.css" title="default" />
 
     <link rel="stylesheet" href="styles/bootstrap.css" /> 
-
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
@@ -22,8 +21,8 @@
         <!-- TODO: use phonegap splashscreen or jq.ui's -->
         <!-- This is header at the top -->
         <div id="header" class="padded"> 
-            <a class="icon magnifier big pull-right" style="display:none"></a>
-            <a class="icon basket big"></a>
+            <a class="icon big magnifier pull-right" style="display:none"></a>
+            <a class="icon big icon-shopping-cart"></a>
         </div>
             <!-- The content div is where all your panels live. -->
         <div id="content"> 
@@ -46,7 +45,7 @@
             <div ng-controller="ProductCtrl" title="Sonuçlar" id="results" class="panel">
 
                 <div id="product" class="padded">
-                    <img id="productImage" src={{productInfo.imageSrc}} />
+                    <img id="productImage" src={{productInfo.imageSrc}} class="img-rounded" />
                     <h4 id="productName">{{productInfo.name}}</h4>
                     <p>  </p>
                 </div>
@@ -89,9 +88,9 @@
         <!-- The footer (bottom navbar).  Add additional tabs here
         The footer is a persistant navugation bar at the bottom -->
         <div id="navbar">
-            <a id="main" class="icon down" href="#main" data-transition="fade">İNDİRİM</a>
-            <a id="scan" class="icon camera" href="#results" data-transition="fade">OKU</a>
-            <a id="todo" class="icon pencil" href="#todo" data-transition="fade">LİSTE</a>
+            <a id="main" class="icon icon-tag" href="#main" data-transition="fade">İNDİRİM</a>
+            <a id="scan" class="icon icon-camera" href="#results" data-transition="fade">OKU</a>
+            <a id="todo" class="icon icon-list-ul" href="#todo" data-transition="fade">LİSTE</a>
         </div>
 
     </div>
