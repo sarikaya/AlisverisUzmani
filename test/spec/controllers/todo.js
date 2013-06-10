@@ -3,7 +3,7 @@
 describe('Controller: TodoCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('vagrantApp'));
+  beforeEach(module('asistanApp'));
 
   var TodoCtrl,
     scope;

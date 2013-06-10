@@ -1,4 +1,5 @@
 /* style customizations */
+
 body {
     padding-left: 0;
     padding-right: 0;
@@ -8,22 +9,11 @@ body {
     font-size: 18px;
 }
 
-#jQUi .button {
-    font-size: 50px;
-    min-width: 60px;
-    border: 1px solid #666666;
-    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#9ddeff),color-stop(100%,#08c));
-    background-image: -webkit-linear-gradient(top,color-stop(0%,#9ddeff),color-stop(100%,#08c));
-    background-image: linear-gradient(to bottom,color-stop(0%,#9ddeff),color-stop(100%,#08c));
-    color: #FFFFFF;
-}
-
-#jQUi .button.selected {
-    background: #08c;
-}
-
 #jQUi .panel {
     background: #f5f5f5;
+    display: block;
+    position: static;
+    
 }
 
 #jQUi #header {
@@ -97,43 +87,19 @@ ul .icon {
     content:"";
 
 }
+
+#backButton {
+    display:none;
+}
+
+
+
 /* our styles */
 .padded {
     padding-left: 20px;
     padding-right: 20px;
 }
 
-#product {
-   height: 100px;
-}
-
-#productImage {
-    border: 1px solid #000000;
-    height: 80px;
-    float: left;
-    margin: 10px 10px 10px 0;
-}
-
-#productName {
-    height: 100px;
-    padding: 10px;
-}
-
-#prices {
+.list {
     border-top: 1px solid #08c;
-}
-
-#prices .price {
-    color: #08c;
-}
-
-#scan {
-    font-weight: bold;
-}
-
-.icon.close:before {
-    padding: 0;
-}
-#backButton {
-display:none;
 }
