@@ -47,7 +47,6 @@
                 <div id="product" class="padded">
                     <img id="productImage" src={{productInfo.imageSrc}} class="img-rounded" />
                     <h4 id="productName">{{productInfo.name}}</h4>
-                    <p>  </p>
                 </div>
 
                 <div class="padded"> <h3> Fiyatlar </h3> </div>
@@ -55,8 +54,8 @@
                     <li ng-repeat="price in prices"><a>
                        {{price.chainName}} 
                        <i class="muted"> - {{price.branchName}}</i>
-                       <i class="pull-right price">{{price.price}} TL</i>
-                       <b ng-show="price.here" class="icon location big pull-right"></b>
+                       <i class="pull-right price"> {{price.price}} TL</i>
+                       <b ng-show="price.here" class="icon icon-map-marker icon-2x pull-right"></b>
                     </a></li>
                 </ul>
             </div>
