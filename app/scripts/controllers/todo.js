@@ -9,7 +9,7 @@ angular.module('asistanApp')
        $scope.todoInput = '';
      };
 
-     $scope.removeTodo = function (todo) {
-       $scope.todos.splice($scope.todos.indexOf(todo), 1);
+     $scope.removeTodo = function (index) {
+       $scope.todos.splice(index, 1);
      };
   });
