@@ -9,8 +9,8 @@
     </form>
     <ul class="list">
         <li ng-repeat="todo in todos"><a>
-            {{todo.text}} 
-            <b id="close" class="icon icon-remove big pull-right" ng-click="removeTodo(todo)"></b>
+            {{todo.text}}
+            <b id="close" class="icon icon-remove big pull-right" ng-click="removeTodo($index)"></b>
         </a></li>
     </ul>
 
