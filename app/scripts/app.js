@@ -11,7 +11,7 @@ angular.module('asistanApp', [])
         templateUrl: 'views/deals.html',
         controller: 'DealsCtrl'
       })
-      .when('/product', {
+      .when('/product/:barcode', {
         templateUrl: 'views/product.html',
         controller: 'ProductCtrl'
       })

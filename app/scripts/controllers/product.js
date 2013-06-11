@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('asistanApp')
-  .controller('ProductCtrl', function ($scope) {
+  .controller('ProductCtrl', function ($scope, $routeParams) {
+    $routeParams.barcode;
     $scope.productInfo = {
 	"imageSrc": "main.jpg",
         "name": "ÜLKER ÇİKOLATALI GOFRET 38 GR"
