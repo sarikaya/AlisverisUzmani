@@ -39,9 +39,9 @@
 
         <!-- The footer (bottom navbar).  Add additional tabs here
         The footer is a persistant navigation bar at the bottom -->
-        <div id="navbar">
+        <div id="navbar" ng-click="scan()">
             <a id="main" class="icon icon-tag" href="#/">FIRSAT</a>
-            <a id="scan" class="icon icon-camera" href="#/product/123213123123">OKU</a>
+            <a id="scan" class="icon icon-camera">OKU</a>
             <a id="todo" class="icon icon-list-ul" href="#/todo">LİSTE</a>
         </div>
     </div>
@@ -57,6 +57,7 @@
     <script src="components/angular/angular.js"></script>
     <script src="components/angular-resource/angular-resource.js"></script>
     <!-- build:js scripts/scripts.js -->
+    <script src="scripts/develop.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/deals.js"></script>
