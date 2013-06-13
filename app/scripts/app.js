@@ -25,16 +25,27 @@ angular.module('asistanApp', [])
   });
 
 angular.module('asistanApp')
-  .run(function ($rootScope, $location) {
+  .run(function ($rootScope, $location, barcodeScanner) {
+
+    $rootScope.safeApply = function(fn) {
+      var phase = this.$root.$$phase;
+      if(phase == '$apply' || phase == '$digest') {
+        if(fn && (typeof(fn) === 'function')) {
+          fn();
+        }
+      } else {
+        this.$apply(fn);
+      }
+    };
 
     $rootScope.scan = function() {
-
+    
       function onError(error) {
         // TODO: when there is a error, redirect user to the search page for 
         // searching barcode no or name of product
       }
 
-      window.plugins.barcodeScanner.scan(function(barcode) {
+      barcodeScanner.scan(function(barcode) {
         if (barcode.cancelled) { 
           onError();
         }
@@ -45,3 +56,4 @@ angular.module('asistanApp')
       
     };
   });
+
