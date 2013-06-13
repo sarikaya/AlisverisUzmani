@@ -37,9 +37,12 @@ angular.module('asistanApp')
         this.$apply(fn);
       }
     };
+  });
 
-    $rootScope.scan = function() {
-    
+
+// TODO: add this to new scanner controller that run in the everytime or use as a resolver ... at /scan
+function a($scope, $location, barcodeScanner) {
+
       function onError(error) {
         // TODO: when there is a error, redirect user to the search page for 
         // searching barcode no or name of product
@@ -54,6 +57,4 @@ angular.module('asistanApp')
         $location.path('/product/' + barcode.text);
       }, onError);
       
-    };
-  });
-
+}
