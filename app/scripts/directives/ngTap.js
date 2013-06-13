@@ -2,11 +2,9 @@
 
 angular.module('asistanApp')
   .directive('ngTap', function () {
-    return {
-      template: '<div></div>',
-      restrict: 'E',
-      link: function postLink(scope, element, attrs) {
-        element.text('this is the ngTap directive');
-      }
+    return function (scope, element, attrs) {
+      $(element).on("tap", function (ev) {
+        scope.$apply(attrs['ngTap']);
+      });
     };
   });
