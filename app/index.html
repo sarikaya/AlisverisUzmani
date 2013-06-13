@@ -34,15 +34,18 @@
             <div id="view" title="Alışveriş Asistanı" class="panel selected" selected="true">
                 <div ng-view></div>
             </div>
+                        <div id="vi" title="Alışveriş Asistanı" class="panel selected" selected="true">
+                <div ng-view></div>
+            </div>
         </div>
 
 
         <!-- The footer (bottom navbar).  Add additional tabs here
         The footer is a persistant navigation bar at the bottom -->
         <div id="navbar">
-            <a id="main" class="icon icon-tag" href="#/">FIRSAT</a>
-            <a id="scan" class="icon icon-camera" ng-click="scan()">OKU</a> <!-- FIXME: cannot click-->
-            <a id="todo" class="icon icon-list-ul" href="#/todo">LİSTE</a>
+            <a class="icon icon-tag" href="#/" data-ignore="true">FIRSAT</a>
+            <a class="icon icon-camera" href="#/scan" data-ignore="true">OKU</a>
+            <a class="icon icon-list-ul" href="#/todo" data-ignore="true">LİSTE</a>
         </div>
     </div>
 
