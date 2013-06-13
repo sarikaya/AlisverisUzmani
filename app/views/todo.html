@@ -3,9 +3,9 @@
 </header>
 <div id="todoView">
 
-    <form ng-submit="addTodo()">
+    <form ng-submit="addTodo()" class="padded" id="todoForm">
         <input type="text" id="todoText" ng-model="todoInput" class="input-xlarge" placeholder="Ürünleri giriniz" required>
-        <input type="submit" id="todoButton" class="btn btn-mini pull-right" value=" + ">
+        <button type="submit" id="todoButton" class="btn btn-large pull-right"> <i class="icon-plus icon-large"></i></button>
     </form>
     <ul class="list">
         <li ng-repeat="todo in todos"><a>
