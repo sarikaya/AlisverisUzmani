@@ -1,16 +1,23 @@
 'use strict';
 
 angular.module('asistanApp')
-  .factory('deviceReady', function () {
-    // Service logic
-    // ...
+  .factory('deviceReady', function ($rootScope) {
+    return function (fn) {
+      var queue = [];
 
-    var meaningOfLife = 42;
+      var impl = function () {
+        queue.push(Array.prototype.slice.call(arguments));
+      };
 
-    // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
+      document.addEventListener('deviceready', function () {
+        queue.forEach(function (args) {
+          fn.apply(this, args);
+        });
+        impl = fn;
+      }, false);
+      
+      return function () {
+        return impl.apply(this, arguments);
+      };
     };
   });
