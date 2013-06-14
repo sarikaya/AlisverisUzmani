@@ -15,7 +15,29 @@ angular.module('asistanApp', [])
         templateUrl: 'views/product.html',
         controller: 'ProductCtrl',
         resolve: {
-          data: function () {
+          data: function ($route, barcodeScanner) {
+
+            var barcodeParam = $route.current.params.barcode;
+
+            function onScanError(error) {
+              // TODO: when there is a error, redirect user to the search page for 
+              // searching barcode no or name of product
+            }
+
+            if (barcodeParam === "scanitnow") {
+              barcodeScanner.scan(function(barcode) {
+              
+                if (barcode.cancelled) {
+                  onScanError();
+                }
+
+                // TODO: use barcode.text. maybe barcode.format
+                barcodeParam = barcode.text;
+              }, onScanError);
+            }
+
+            // get the response promise by using barcodeParam, geolocatin etc...
+
             var resp = {};
             resp.productInfo = {
 	          "imageSrc": "img/main.jpg",
@@ -61,23 +83,3 @@ angular.module('asistanApp')
     };
     
   });
-
-
-// TODO: add this to new scanner controller that run in the everytime or use as a resolver ... at /scan
-function a($scope, $location, barcodeScanner) {
-
-      function onError(error) {
-        // TODO: when there is a error, redirect user to the search page for 
-        // searching barcode no or name of product
-      }
-
-      barcodeScanner.scan(function(barcode) {
-        if (barcode.cancelled) { 
-          onError();
-        }
-        
-        // TODO: use barcode.text. maybe barcode.format
-        $location.path('/product/' + barcode.text);
-      }, onError);
-      
-}
