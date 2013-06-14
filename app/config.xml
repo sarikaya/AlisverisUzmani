@@ -6,14 +6,14 @@
         id        = "com.phonegap.asistan"
         version   = "0.0.1">
 
-    <name>Alışveriş Asistanı</name>
+    <name>Asistant</name>
 
     <description>
-        Hizmetinize hazırım!
+        description
     </description>
 
     <author href="https://www.alisverisasistani.com" email="alisveris.asistani@gmail.com">
-        Şahitler 
+        sahitler 
     </author>
     
     <!--
