@@ -10,12 +10,18 @@ apt-mirror-pick 'us'
 
 # Install Yeoman (node package)
 # if [ command -v yeoman >/dev/null 2>&1 ]
-if [ -x /usr/bin/yo ]
+if [ -d /usr/local/src/phantomjs-1.9.1-linux-i686 ]
 then
-    echo 'Yeoman is installed. '
+    echo 'vagrant boot.sh is skipped '
 else
-    echo 'Install yeoman. '
+    echo 'boot.sh is running '
+    
+    cd /vagrant
+    
     apt-packages-update
+    
+    
+    ########### Compass ############### // it is not needed
     apt-packages-install ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 rake rbenv
 
     #curl -L get.rvm.io | bash -s stable --auto
@@ -30,7 +36,8 @@ else
     then
         sudo gem install compass
     fi
-
+    
+    ############# yo dependencies ####################
     apt-packages-install software-properties-common python-software-properties python g++ make build-essential git-core python curl
 
     # Install Yeoman and dependencies 
@@ -44,11 +51,37 @@ else
     apt-packages-install libssl-dev libfontconfig libjpeg-progs optipng
 
 
+    ############# nodejs ##################
     apt-packages-ppa 'chris-lea/node.js'
     apt-packages-update
     apt-packages-install nodejs
 
     # set node path
     echo 'if [ -d "/usr/lib/node_modules" ]; then NODE_PATH="/usr/lib/node_modules"; fi' >> ~/.profile
-    sudo npm install -g yo grunt-cli bower generator-angular grunt-phonegap-build 
+    
+    ######### yeoman #############
+    sudo npm install -g yo karma grunt-cli  bower generator-angular generator-karma 
+    sudo npm install
+
+    ############# PhantomJS ###############
+    # PhantomJS - see: http://phantomjs.org/download.html & http://phantomjs.org/build.html
+    # 32-bit - https://phantomjs.googlecode.com/files/phantomjs-1.9.1-linux-i686.tar.bz2
+   
+    if [ -d /usr/local/src/phantomjs-1.9.1-linux-i686 ]
+    then
+      echo 'We have the src for phantomjs. '
+    else 
+      cd /usr/local/src
+      curl -L https://phantomjs.googlecode.com/files/phantomjs-1.9.1-linux-i686.tar.bz2 | sudo tar jx
+      echo 'The phantomjs src us downloaded. '
+    fi
+
+    if [ -L /usr/local/bin/phantomjs ]
+    then
+      echo 'We have a symbolic link for phantomjs. '
+    else 
+      echo 'Create a symbolic link for phantomjs. '
+      sudo ln -s /usr/local/src/phantomjs-1.9.1-linux-i686/bin/phantomjs /usr/local/bin/phantomjs
+    fi
+        
 fi
