@@ -1,5 +1,10 @@
 /* style customizations */
 
+/* When you load angular at the bottom, you need to create the "ng-cloak" rules yourself */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
 body {
     padding-left: 0;
     padding-right: 0;
