@@ -26,15 +26,15 @@
         <!-- TODO: use phonegap splashscreen or jq.ui's -->
 
         <!-- TODO: add customized header to the all views, from $scope or $route or $rootscope-->
-        <div id=header class="padded"> <a class="icon big icon-shopping-cart"></a> </div>
+        <div id="header" class="padded">
+            <h1 id="pageTitle">Alışveriş Asistanı</h1>
+            <a class="icon big icon-shopping-cart"></a>
+        </div>
 
         <!-- The content div is where all your panels live. -->
         <div id="content">
             <!-- Panels are the individual pages/content area for your app -->
-            <div id="view" title="Alışveriş Asistanı" class="panel selected" selected="true">
-                <div ng-view></div>
-            </div>
-                        <div id="vi" title="Alışveriş Asistanı" class="panel selected" selected="true">
+            <div id="view" class="panel" selected="true">
                 <div ng-view></div>
             </div>
         </div>
