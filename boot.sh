@@ -60,7 +60,7 @@ else
     echo 'if [ -d "/usr/lib/node_modules" ]; then NODE_PATH="/usr/lib/node_modules"; fi' >> ~/.profile
     
     ######### yeoman #############
-    sudo npm install -g yo karma grunt-cli  bower generator-angular generator-karma 
+    sudo npm install -g yo karma grunt-cli  bower generator-angular
     sudo npm install
 
     ############# PhantomJS ###############
