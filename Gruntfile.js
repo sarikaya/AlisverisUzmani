@@ -260,7 +260,6 @@ module.exports = function (grunt) {
     'htmlmin',
     'concat',
     'copy',
-    'cdnify',
     'ngmin',
     'uglify',
     'rev',

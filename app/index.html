@@ -1,12 +1,17 @@
 <!doctype html>
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
+  <head>  
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- phone gap files here -->    
+    <script src="phonegap.js"></script>
+    <script src="barcodescanner.js"></script>
+    
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/bootstrap.css" />
     <link rel="stylesheet" href="styles/font-awesome.css" />
@@ -49,18 +54,19 @@
         </div>
     </div>
 
-    <!-- asistanApp javascripts TODO:add them to the build in this order -->
-    <script src="phonegap.js"></script>
-    <script src="barcodescanner.js"></script>
+    <!-- components  TODO: only copy minified versions in the build -->
     <script src="components/jqmobi/jq.mobi.min.js"></script>
     <script src="components/jqmobi/jq.ui.min.js"></script>
-    <script src="components/jqmobi/jq.desktopBrowsers.js"></script>
-    <!--  -->
-
     <script src="components/angular/angular.js"></script>
     <script src="components/angular-resource/angular-resource.js"></script>
-    <!-- build:js scripts/scripts.js -->
+    <!-- end -->
+
+    <!-- TODO: ignore this files in the build, but develop must be undefined-->
+    <script src="components/jqmobi/jq.desktopBrowsers.js"></script>
     <script src="scripts/develop.js"></script>
+    <!-- end -->
+
+    <!-- build:js scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/deals.js"></script>
