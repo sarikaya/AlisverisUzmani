@@ -4,7 +4,8 @@ angular.module('asistanApp')
   .factory('barcodeScanner', function ($rootScope, deviceReady) {
     return {
       scan: deviceReady(function (onSuccess, onError) {
-        window.plugins.barcodeScanner.scan(function () {
+        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+        scanner.scan(function () {
           var that = this,
             args = arguments;
             
