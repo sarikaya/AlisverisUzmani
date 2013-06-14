@@ -61,7 +61,7 @@ else
     
     ######### yeoman #############
     sudo npm install -g yo karma grunt-cli  bower generator-angular
-    sudo npm install
+    sudo npm install -g
 
     ############# PhantomJS ###############
     # PhantomJS - see: http://phantomjs.org/download.html & http://phantomjs.org/build.html
