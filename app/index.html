@@ -54,6 +54,7 @@
         </div>
     </div>
 
+    <script> var DEVELOP=false; // develop is false in the begining </script>
     <!-- components  TODO: only copy minified versions in the build -->
     <script src="components/jqmobi/jq.mobi.min.js"></script>
     <script src="components/jqmobi/jq.ui.min.js"></script>
@@ -61,12 +62,11 @@
     <script src="components/angular-resource/angular-resource.js"></script>
     <!-- end -->
 
-    <!-- TODO: ignore this files in the build, but develop must be undefined-->
-    <script src="components/jqmobi/jq.desktopBrowsers.js"></script>
-    <script src="scripts/develop.js"></script>
-    <!-- end -->
+    <!-- ignore these files in the build-->
+        <script src="components/jqmobi/jq.desktopBrowsers.js"></script>
+        <script src="scripts/develop.js"></script>
 
-    <!-- build:js scripts/scripts.js -->
+    <!-- build:js scripts/scripts.js -->    
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/deals.js"></script>
