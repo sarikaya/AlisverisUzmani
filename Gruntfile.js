@@ -224,9 +224,28 @@ module.exports = function (grunt) {
             '.htaccess',
             'components/**/*',
             'images/{,*/}*.{gif,webp}',
-            'styles/fonts/*'
+            'styles/fonts/*',
+            '!components/jqmobi/jq.desktopBrowsers.js',
+            '!scripts/develop.js'
           ]
         }]
+      }
+    },
+    compress: {
+      options: {
+        archive: 'app.zip'
+      },
+      src: ['<%= yeoman.dist %>/**'],
+      dest: '<%= yeoman.dist %>/',
+    },
+    phonegap-build: {
+      options: {
+        archive: '<%= yeoman.dist %>/app.zip',
+        appId: '427986',
+        user: {
+          email: 'alisveris.asistani@gmail.com',
+          password: '1992phonegap1992'
+        }
       }
     }
   });
@@ -265,6 +284,7 @@ module.exports = function (grunt) {
     'rev',
     'usemin'
   ]);
-
-  grunt.registerTask('default', ['build']);
+  
+  grunt.registerTask('default', 'build compress phonegap-build');
+  
 };
