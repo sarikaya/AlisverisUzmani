@@ -40,7 +40,7 @@ angular.module('asistanApp', [])
 
             var resp = {};
             resp.productInfo = {
-	          "imageSrc": "img/main.jpg",
+	          "imageSrc": "images/main.jpg",
               "name": "ÜLKER ÇİKOLATALI GOFRET 38 GR"
             };
             
