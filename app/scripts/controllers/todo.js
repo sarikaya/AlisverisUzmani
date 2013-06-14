@@ -5,8 +5,10 @@ angular.module('asistanApp')
      $scope.todos = todos;
 
      $scope.addTodo = function() {
-       $scope.todos.push({"text": $scope.todoInput});
-       $scope.todoInput = '';
+       if ($scope.todoInput) {
+         $scope.todos.push({"text": $scope.todoInput});
+         $scope.todoInput = '';
+       }
      };
 
      $scope.removeTodo = function (index) {
