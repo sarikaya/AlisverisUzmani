@@ -285,6 +285,6 @@ module.exports = function (grunt) {
     'usemin'
   ]);
   
-  grunt.registerTask('default', 'build compress phonegap-build');
+  grunt.registerTask('default', ['build', 'compress', 'phonegap-build']);
   
 };
