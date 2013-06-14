@@ -1,21 +1,29 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-    <widget xmlns = "http://www.w3.org/ns/widgets"
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
+<widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.example"
-        versionCode="10" 
-        version   = "1.0.0">
+        id        = "com.phonegap.asistan"
+        version   = "0.0.1">
 
-    <!-- versionCode is optional and Android only -->
-
-    <name>Barcode scanner</name>
+    <name>Alışveriş Asistanı</name>
 
     <description>
-        scan barcodes 
+        Hizmetinize hazırım!
     </description>
 
-    <author href="https://build.phonegap.com" email="alisveris.asistani@gmail.com">
-        Hardeep Shoker 
+    <author href="https://www.alisverisasistani.com" email="alisveris.asistani@gmail.com">
+        Şahitler 
     </author>
+    
+    <!--
+        Enable individual API permissions by defining each here.
+        The 'device' permission is required for the 'deviceready' event.
+    -->
+    <feature name="http://api.phonegap.com/1.0/device" />
+	<feature name="http://api.phonegap.com/1.0/camera"/>
+	<feature name="http://api.phonegap.com/1.0/geolocation"/>
+	<feature name="http://api.phonegap.com/1.0/network"/>
     
     <preference name="orientation" value="portrait" />
     <preference name="android-minSdkVersion" value="6" />
