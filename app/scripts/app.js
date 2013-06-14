@@ -13,11 +13,33 @@ angular.module('asistanApp', [])
       })
       .when('/product/:barcode', {
         templateUrl: 'views/product.html',
-        controller: 'ProductCtrl'
+        controller: 'ProductCtrl',
+        resolve: {
+          data: function () {
+            var resp = {};
+            resp.productInfo = {
+	          "imageSrc": "img/main.jpg",
+              "name": "ÜLKER ÇİKOLATALI GOFRET 38 GR"
+            };
+            
+            resp.prices = [
+	          {"chainName": "BİM", "branchName": "Bulgurlu", "price": 0.45, "here": true},
+  	          {"chainName": "A 101", "branchName": "Bulgurlu", "price": 0.45},
+	          {"chainName": "Şok", "branchName": "Bulgurlu", "price": 0.57}
+            ];
+
+            return resp;
+          }
+        }
       })
       .when('/todo', {
         templateUrl: 'views/todo.html',
-        controller: 'TodoCtrl'
+        controller: 'TodoCtrl',
+        resolve: {
+          todos: function () {
+            return [{"text": "Süt"}, {"text": "Yumurta"}, {"text": "Bal"}]; 
+          }
+        }
       })
       .otherwise({
         redirectTo: '/'
@@ -37,6 +59,7 @@ angular.module('asistanApp')
         this.$apply(fn);
       }
     };
+    
   });
 
 
