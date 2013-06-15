@@ -222,7 +222,7 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,txt,xml}',
             '.htaccess',
-            'components/**/*',
+            'components/**/*.min.js',
             'images/{,*/}*.{gif,webp}',
             'styles/fonts/*',
           ]
@@ -274,7 +274,6 @@ module.exports = function (grunt) {
   ]);
 
   // FIXME: angular minification errors
-  // FIXME: copy only min files in the components
   grunt.registerTask('build', [
     'clean:dist',
     'jshint',
