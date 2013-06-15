@@ -225,8 +225,6 @@ module.exports = function (grunt) {
             'components/**/*',
             'images/{,*/}*.{gif,webp}',
             'styles/fonts/*',
-            '!components/jqmobi/jq.desktopBrowsers.js',
-            '!scripts/develop.js'
           ]
         }]
       }
@@ -240,11 +238,11 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.dist %>/',
-          src: ['**'], // Actual pattern(s) to match.
+          src: ['**'],
         }]
       }
     },
-    'phonegap-build': {
+    'phonegap-build': { // FIXME: cannot built
       options: {
         archive: '<%= yeoman.dist %>/app.zip',
         appId: '427986',
@@ -275,6 +273,8 @@ module.exports = function (grunt) {
     'karma'
   ]);
 
+  // FIXME: angular minification errors and incomplete copying (without config.xml, etc.)
+  // FIXME: copy only min files in the components
   grunt.registerTask('build', [
     'clean:dist',
     'jshint',
