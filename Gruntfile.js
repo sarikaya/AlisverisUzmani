@@ -251,7 +251,8 @@ module.exports = function (grunt) {
         user: {
           email: 'alisveris.asistani@gmail.com',
           password: '1992phonegap1992'
-        }
+        },
+        timeout: 60
       }
     }
   });
