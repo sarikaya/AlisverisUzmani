@@ -232,8 +232,12 @@ module.exports = function (grunt) {
       }
     },
     compress: {
-      files: {
-        '<%= yeoman.dist %>/app.zip': '<%= yeoman.dist %>/**'
+      zip: {
+        options: {
+          archive: './foo.zip',
+          mode: 'zip'
+        },
+        files: [ { src: './foo/**' } ]
       }
     },
     'phonegap-build': {
@@ -283,6 +287,6 @@ module.exports = function (grunt) {
     'usemin'
   ]);
   
-  grunt.registerTask('default', ['build', 'compress', 'phonegap-build']);
+  grunt.registerTask('default', ['build', 'compress:zip', 'phonegap-build']);
   
 };
