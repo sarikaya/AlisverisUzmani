@@ -220,7 +220,7 @@ module.exports = function (grunt) {
           cwd: '<%= yeoman.app %>',
           dest: '<%= yeoman.dist %>',
           src: [
-            '*.{ico,txt}',
+            '*.{ico,txt,xml}',
             '.htaccess',
             'components/**/*',
             'images/{,*/}*.{gif,webp}',
@@ -273,7 +273,7 @@ module.exports = function (grunt) {
     'karma'
   ]);
 
-  // FIXME: angular minification errors and incomplete copying (without config.xml, etc.)
+  // FIXME: angular minification errors
   // FIXME: copy only min files in the components
   grunt.registerTask('build', [
     'clean:dist',
