@@ -1,7 +1,5 @@
 'use strict';
 
-// TODO: inject jqmobi instead jqlite
-
 // TODO: set title in the every route change
 
 angular.module('asistanApp', [])
