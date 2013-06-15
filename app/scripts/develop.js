@@ -169,8 +169,6 @@ if (DEVELOP) {
 // #################  end of the jq.desktopBrowsers.js #####################//
 
 
-//FIXME: cannot trigger deviceready event
-document.addEventListener("deviceready", function(){alert('aa')}, false);
 var e = document.createEvent('Events'); 
 e.initEvent("deviceready");
 document.dispatchEvent(e);
