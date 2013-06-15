@@ -234,10 +234,10 @@ module.exports = function (grunt) {
     compress: {
       zip: {
         options: {
-          archive: './foo.zip',
+          archive: '<%= yeoman.dist %>/app.zip',
           mode: 'zip'
         },
-        files: [ { src: './foo/**' } ]
+        files: [ { src: '<%= yeoman.dist %>/**' } ]
       }
     },
     'phonegap-build': {
