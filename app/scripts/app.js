@@ -16,9 +16,8 @@ angular.module('asistanApp', [])
       .when('/product/:barcode', {
         templateUrl: 'views/product.html',
         controller: 'ProductCtrl',
-        resolve: {
-          data: function ($route, barcodeScanner) {
-
+        resolve: { // XXX: use inline annotation temporarily until ngmin implement it
+          data: ['$route', 'barcodeScanner', function ($route, barcodeScanner) {
             var barcodeParam = $route.current.params.barcode;
 
             function onScanError(error) {
@@ -56,7 +55,7 @@ angular.module('asistanApp', [])
             ];
 
             return resp;
-          }
+          }]
         }
       })
       .when('/todo', {
@@ -76,7 +75,7 @@ angular.module('asistanApp', [])
   });
 
 angular.module('asistanApp')
-  .run(function ($rootScope, $location, barcodeScanner) {
+  .run(function ($rootScope) {
 
     // TODO: write loading screen between routechange start and success
 

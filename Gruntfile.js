@@ -273,7 +273,6 @@ module.exports = function (grunt) {
     'karma'
   ]);
 
-  // FIXME: angular minification errors
   grunt.registerTask('build', [
     'clean:dist',
     'jshint',
@@ -291,6 +290,7 @@ module.exports = function (grunt) {
     'usemin'
   ]);
   
-  grunt.registerTask('default', ['build', 'compress:zip', 'phonegap-build']);
+  grunt.registerTask('default', ['build', 'compress:zip']);
+  // TODO: add it, when you solve until it ->     ,'phonegap-build']);
   
 };
