@@ -277,7 +277,6 @@ module.exports = function (grunt) {
     'clean:dist',
     'jshint',
     'test',
-    'compass:dist',
     'useminPrepare',
     'imagemin',
     'cssmin',
