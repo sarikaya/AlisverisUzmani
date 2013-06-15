@@ -238,7 +238,7 @@ module.exports = function (grunt) {
       src: ['<%= yeoman.dist %>/**'],
       dest: '<%= yeoman.dist %>/',
     },
-    phonegap-build: {
+    'phonegap-build': {
       options: {
         archive: '<%= yeoman.dist %>/app.zip',
         appId: '427986',
