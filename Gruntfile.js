@@ -237,7 +237,12 @@ module.exports = function (grunt) {
           archive: '<%= yeoman.dist %>/app.zip',
           mode: 'zip'
         },
-        files: [ { src: '<%= yeoman.dist %>/**' } ]
+        files: [
+        {
+          expand: true,
+          cwd: '<%= yeoman.dist %>/',
+          src: ['**'], // Actual pattern(s) to match.
+        }
       }
     },
     'phonegap-build': {
