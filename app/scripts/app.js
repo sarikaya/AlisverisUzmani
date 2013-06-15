@@ -1,5 +1,9 @@
 'use strict';
 
+// TODO: inject jqmobi instead jqlite
+
+// TODO: set title in the every route change
+
 angular.module('asistanApp', [])
   .config(function ($routeProvider) {
     $routeProvider
@@ -36,7 +40,10 @@ angular.module('asistanApp', [])
               }, onScanError);
             }
 
-            // get the response promise by using barcodeParam, geolocatin etc...
+            // TODO: get geolocation fast (using some geolocation 30 min timeout cache)
+            // TODO: get the response promise by using barcodeParam, geolocatin etc...
+            // TODO: use resource e2e for faking(mocking) server. move all the response data to the e2e(in the develop.js)
+            // TODO: is resource called in every route change? or only once in the ctrlr
 
             var resp = {};
             resp.productInfo = {
@@ -59,6 +66,7 @@ angular.module('asistanApp', [])
         controller: 'TodoCtrl',
         resolve: {
           todos: function () {
+            // TODO: return from localstorage, and inject localstorage to the TodoCtrl
             return [{"text": "Süt"}, {"text": "Yumurta"}, {"text": "Bal"}]; 
           }
         }
@@ -66,10 +74,13 @@ angular.module('asistanApp', [])
       .otherwise({
         redirectTo: '/'
       });
+      // TODO: use html5location provider
   });
 
 angular.module('asistanApp')
   .run(function ($rootScope, $location, barcodeScanner) {
+
+    // TODO: write loading screen between routechange start and success
 
     $rootScope.safeApply = function(fn) {
       var phase = this.$root.$$phase;
