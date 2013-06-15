@@ -232,11 +232,9 @@ module.exports = function (grunt) {
       }
     },
     compress: {
-      options: {
-        archive: 'app.zip'
-      },
-      src: ['<%= yeoman.dist %>/**'],
-      dest: '<%= yeoman.dist %>/',
+      files: {
+        '<%= yeoman.dist %>/app.zip': '<%= yeoman.dist %>/**'
+      }
     },
     'phonegap-build': {
       options: {
