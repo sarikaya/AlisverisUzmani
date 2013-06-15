@@ -3,9 +3,6 @@
 angular.module('asistanApp')
   .factory('deviceReady', function ($rootScope) {
     return function (fn) {
-      if (DEVELOP) {
-        return fn;
-      }
       var queue = [];
 
       var impl = function () {
