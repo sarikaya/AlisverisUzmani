@@ -242,16 +242,19 @@ module.exports = function (grunt) {
         }]
       }
     },
-    'phonegap-build': { // FIXME: cannot built
-      options: {
-        archive: '<%= yeoman.dist %>/app.zip',
-        appId: '427986',
-        user: {
-          email: 'alisveris.asistani@gmail.com',
-          password: '1992phonegap1992'
-        },
-        timeout: 60
+    'phonegap-build': {
+      main : {
+        options: {
+          archive: '<%= yeoman.dist %>/app.zip',
+          appId: '427986',
+          user: {
+            email: 'alisveris.asistani@gmail.com',
+            password: '1992phonegap1992'
+          },
+          timeout: 60000
+        }
       }
+
     }
   });
 
@@ -289,7 +292,6 @@ module.exports = function (grunt) {
     'usemin'
   ]);
   
-  grunt.registerTask('default', ['build', 'compress:zip']);
-  // TODO: add it, when you solve until it ->     ,'phonegap-build']);
-  
+  grunt.registerTask('default', ['build', 'compress:zip', 'phonegap-build:main']);
+
 };
