@@ -24,7 +24,7 @@ angular.module('asistanApp', [])
               // TODO: when there is a error, redirect user to the search page for 
               // searching barcode no or name of product
             }
-
+            // FIXME: when tapping to the scan again in the scan cause problems
             if (barcodeParam === "scanitnow") {
               barcodeScanner.scan(function(barcode) {
               
@@ -39,7 +39,7 @@ angular.module('asistanApp', [])
 
             // TODO: get geolocation fast (using some geolocation 30 min timeout cache)
             // TODO: get the response promise by using barcodeParam, geolocatin etc...
-            // TODO: use resource e2e for faking(mocking) server. move all the response data to the e2e(in the develop.js)
+            // TODO: use resource e2e for faking(mocking) server. move all the response data to the e2e(in the develop.js) // its hard to achieve, forget it. use development server or production server
             // TODO: is resource called in every route change? or only once in the ctrlr
 
             var resp = {};

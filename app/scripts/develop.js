@@ -1,18 +1,15 @@
 var DEVELOP = true;
 
-$(document).ready(function() { if (DEVELOP) {
-
-
-
+if (DEVELOP) {
+        
     function load(src) {
-        var s = document.createElement("script");
-        s.type = "text/javascript";
-        s.src = src;
-        $("head").append(s);
+        $(document).ready(function() {
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.src = src;
+            $("head").append(s);
+        });
     }
-
-
-
 
     // ################ fake touch ##################### //
     load("components/jqmobi/jq.desktopBrowsers.js");
@@ -34,19 +31,15 @@ $(document).ready(function() { if (DEVELOP) {
                                  } 
                     };
 
+}
 
-    // ################ http backend mock (fake) #########################//
-    
-    // TODO: add angular-mocks.js dynamically
-    load("components/angular-mocks/angular-mocks.js");
-
-    angular.module('asistanApp', [])
-        .config(function($provide) {
-            $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
-        })
-        .run(function($httpBackend) {
-            // define responses for requests here as usual
-        });
-
-
-}});
+        /*
+        // TODO: using jqMobi instead of jqlite befor angular js
+        window.jQuery = jq;
+        (function($){
+          //AngularJS requires .contents() function of jQuery mimic this with .children() function
+          $.fn['contents'] = $.fn['children'];
+          // angularjs requires next, after, contents, removeData, replaceWith, toggleClass, triggerHandler, wrap function of jQuery
+        })(jq);
+        
+        */
