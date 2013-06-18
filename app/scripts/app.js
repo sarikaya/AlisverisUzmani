@@ -34,15 +34,18 @@ angular.module('asistanApp', [])
                   onScanError();
                 } else {
                   // TODO: use barcode.text. maybe barcode.format
-
+                  barcodeParam = barcode.text;
                 }
               }, onScanError);
-            } else {
-              // TODO: get geolocation fast (using some geolocation 30 min timeout cache)
-              // TODO: get the response promise by using barcodeParam, geolocatin etc...
-              // TODO: is resource called in every route change? or only once in the ctrlr
-              return $http.post('/product', {"barcode": barcodeParam, "lat": 12312, "long": 234234});
             }
+            
+            $location.path('/product/' + barcodeParam).replace();
+            
+            // TODO: get geolocation fast (using some geolocation 30 min timeout cache)
+            // TODO: get the response promise by using barcodeParam, geolocatin etc...
+            // TODO: is resource called in every route change? or only once in the ctrlr
+            return $http.post('/product', {"barcode": barcodeParam, "lat": 12312, "long": 234234});
+
           }]
         }
       })
