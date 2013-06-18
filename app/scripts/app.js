@@ -27,6 +27,7 @@ angular.module('asistanApp', [])
               // TODO: is resource called in every route change? or only once in the ctrlr
               return $http.post('/product', {"barcode": barcodeParam, "lat": 12312, "long": 234234});
             }
+            return {};
           }]
         }
       })
