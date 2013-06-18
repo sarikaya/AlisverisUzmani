@@ -34,8 +34,7 @@ angular.module('asistanApp', [])
                   onScanError();
                 } else {
                   // TODO: use barcode.text. maybe barcode.format
-                  $location.path('/product/' + barcode.text).replace();
-                  barcodeParam = barcode.text;
+
                 }
               }, onScanError);
             } else {
