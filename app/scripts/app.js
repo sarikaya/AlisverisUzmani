@@ -19,7 +19,7 @@ angular.module('asistanApp', [])
         templateUrl: 'views/product.html',
         controller: 'ProductCtrl',
         resolve: { // XXX: use inline annotation temporarily until ngmin implement it
-          resp: ['$route', '$http', 'barcodeScanner', function ($route, $http, barcodeScanner) {
+          resp: ['$route', '$http', '$location', 'barcodeScanner', function ($route, $http, $location, barcodeScanner) {
             var barcodeParam = $route.current.params.barcode;
             
             function onScanError(error) {
