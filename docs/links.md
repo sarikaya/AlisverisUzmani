@@ -6,7 +6,7 @@
 # twitter bootstrap
 * http://twitter.github.io/bootstrap/
 
-# angular
+# angularjs
 
 * AngularJS itself: http://angularjs.org
 * Angular docs: http://docs.angularjs.org/api/
@@ -24,3 +24,20 @@
 * Many great tutorials at http://egghead.io/
 * Module library at http://ngmodules.org
 * http://www.cheatography.com/proloser/cheat-sheets/angularjs/
+
+# serverside
+* nodejs (server)
+* expressjs (framework)
+* mongodb (database)
+* mongoose (object mapper)
+
+* http://stackoverflow.com/questions/2353818/how-do-i-get-started-with-node-js
+* expressjs.com
+
+* http://docs.mongodb.org/ecosystem/drivers/node-js/
+* http://coenraets.org/blog/2012/10/creating-a-rest-api-using-node-js-express-and-mongodb/
+* http://howtonode.org/express-mongodb
+* http://howtonode.org/node-js-and-mongodb-getting-started-with-mongojs
+
+* http://mongoosejs.com/
+* http://blog.mongodb.org/post/49262866911/the-mean-stack-mongodb-expressjs-angularjs-and
