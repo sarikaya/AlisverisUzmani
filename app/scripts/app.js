@@ -19,7 +19,7 @@ angular.module('asistanApp', [])
         templateUrl: 'views/product.html',
         controller: 'ProductCtrl',
         resolve: { // XXX: use inline annotation temporarily until ngmin implement it
-          resp: ['$route', '$http', '$location', 'barcodeScanner', function ($route, $http, $location, barcodeScanner) {
+          resp: ['$route', '$http', 'barcodeScanner', function ($route, $http, barcodeScanner) {
             var barcodeParam = $route.current.params.barcode;
             
             function onScanError(error) {
@@ -38,8 +38,6 @@ angular.module('asistanApp', [])
                 }
               }, onScanError);
             }
-            
-            $location.path('/product/' + barcodeParam).replace();
             
             // TODO: get geolocation fast (using some geolocation 30 min timeout cache)
             // TODO: get the response promise by using barcodeParam, geolocatin etc...
