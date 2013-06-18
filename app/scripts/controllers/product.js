@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('asistanApp')
-  .controller('ProductCtrl', function ($scope, $routeParams, $location, resp) {
+  .controller('ProductCtrl', function ($scope, $routeParams, $location, barcodeScanner, resp) {
   
     if ($routeParams.barcode === "scanitnow") {
     
