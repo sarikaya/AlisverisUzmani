@@ -26,7 +26,7 @@ angular.module('asistanApp', [])
               // TODO: when there is a error, redirect user to the search page for 
               // searching barcode no or name of product
             }
-            
+            // FIXME: route is not change again
             if (barcodeParam === "scanitnow") {              
               barcodeScanner.scan(function(barcode) {
               
