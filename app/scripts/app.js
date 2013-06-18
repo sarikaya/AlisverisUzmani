@@ -41,10 +41,9 @@ angular.module('asistanApp', [])
 
             // TODO: get geolocation fast (using some geolocation 30 min timeout cache)
             // TODO: get the response promise by using barcodeParam, geolocatin etc...
-            // TODO: use resource e2e for faking(mocking) server. move all the response data to the e2e(in the develop.js) // its hard to achieve, forget it. use development server or production server
             // TODO: is resource called in every route change? or only once in the ctrlr
 
-            return $http.post('/product', {/*request data*/});
+            return $http.post('/product', {"barcode": barcodeParam, "lat": 12312, "long": 234234});
           }]
         }
       })
