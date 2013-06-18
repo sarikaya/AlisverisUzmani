@@ -6,5 +6,4 @@ angular.module('asistanApp')
       // contains .data, .status, .headers, .config
       $scope.productInfo = resp.data.productInfo;
       $scope.prices = resp.data.prices;
-    }
   });
