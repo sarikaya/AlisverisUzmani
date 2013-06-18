@@ -10,18 +10,19 @@ apt-mirror-pick 'us'
 
 # Install Yeoman (node package)
 # if [ command -v yeoman >/dev/null 2>&1 ]
-if [ -d /usr/local/src/phantomjs-1.9.1-linux-i686 ]
+if [ -d /vagrant/dist ]
 then
-    echo 'vagrant boot.sh is skipped '
+    echo 'vagrant boot.sh is skipped'
+    echo 'because there is a /vagrant/dist folder'
 else
-    echo 'boot.sh is running '
+    echo 'boot.sh is running now'
     
     cd /vagrant
     
     apt-packages-update
     
     
-    ########### Compass ############### // it is not needed
+    ########### Compass ############### // FIXME: it is not needed
     apt-packages-install ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 rake rbenv
 
     #curl -L get.rvm.io | bash -s stable --auto
@@ -51,6 +52,7 @@ else
     apt-packages-install libssl-dev libfontconfig libjpeg-progs optipng
 
 
+
     ############# nodejs ##################
     apt-packages-ppa 'chris-lea/node.js'
     apt-packages-update
@@ -59,9 +61,13 @@ else
     # set node path
     echo 'if [ -d "/usr/lib/node_modules" ]; then NODE_PATH="/usr/lib/node_modules"; fi' >> ~/.profile
     
+    # install dependencies in the package.json --globaly
+    sudo npm install -g
+    
+
+
     ######### yeoman #############
     sudo npm install -g yo karma grunt-cli  bower generator-angular
-    sudo npm install -g
 
     ############# PhantomJS ###############
     # PhantomJS - see: http://phantomjs.org/download.html & http://phantomjs.org/build.html
