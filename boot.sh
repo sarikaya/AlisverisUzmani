@@ -62,7 +62,7 @@ else
     echo 'if [ -d "/usr/lib/node_modules" ]; then NODE_PATH="/usr/lib/node_modules"; fi' >> ~/.profile
     
     # install dependencies in the package.json --globaly
-    sudo npm install -g
+    sudo npm install
     
 
 
