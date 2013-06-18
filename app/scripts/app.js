@@ -4,6 +4,8 @@
 
 angular.module('asistanApp', [])
   .config(function ($routeProvider) {
+    // TODO: use locationProvider for html5location
+    // TODO: use httpProvider for some http config
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -17,7 +19,7 @@ angular.module('asistanApp', [])
         templateUrl: 'views/product.html',
         controller: 'ProductCtrl',
         resolve: { // XXX: use inline annotation temporarily until ngmin implement it
-          data: ['$route', 'barcodeScanner', function ($route, barcodeScanner) {
+          data: ['$route', '$http', 'barcodeScanner', function ($route, $http, barcodeScanner) {
             var barcodeParam = $route.current.params.barcode;
 
             function onScanError(error) {
@@ -42,19 +44,7 @@ angular.module('asistanApp', [])
             // TODO: use resource e2e for faking(mocking) server. move all the response data to the e2e(in the develop.js) // its hard to achieve, forget it. use development server or production server
             // TODO: is resource called in every route change? or only once in the ctrlr
 
-            var resp = {};
-            resp.productInfo = {
-	          "imageSrc": "images/main.jpg",
-              "name": "ÜLKER ÇİKOLATALI GOFRET 38 GR"
-            };
-            
-            resp.prices = [
-	          {"chainName": "BİM", "branchName": "Bulgurlu", "price": 0.45, "here": true},
-  	          {"chainName": "A 101", "branchName": "Bulgurlu", "price": 0.45},
-	          {"chainName": "Şok", "branchName": "Bulgurlu", "price": 0.57}
-            ];
-
-            return resp;
+            return $http.post('/product', {/*request data*/});
           }]
         }
       })
@@ -71,7 +61,6 @@ angular.module('asistanApp', [])
       .otherwise({
         redirectTo: '/'
       });
-      // TODO: use html5location provider
   });
 
 angular.module('asistanApp')
