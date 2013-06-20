@@ -34,10 +34,11 @@
 * http://stackoverflow.com/questions/2353818/how-do-i-get-started-with-node-js
 * expressjs.com
 
+* http://docs.mongodb.org/manual/installation/
+* http://docs.mongodb.org/manual/tutorial/getting-started/
+* http://docs.mongodb.org/manual/mongo/
+* http://docs.mongodb.org/manual/contents/
+* http://docs.mongodb.org/manual/tutorial/
 * http://docs.mongodb.org/ecosystem/drivers/node-js/
-* http://coenraets.org/blog/2012/10/creating-a-rest-api-using-node-js-express-and-mongodb/
-* http://howtonode.org/express-mongodb
-* http://howtonode.org/node-js-and-mongodb-getting-started-with-mongojs
-
-* http://mongoosejs.com/
-* http://blog.mongodb.org/post/49262866911/the-mean-stack-mongodb-expressjs-angularjs-and
+* https://github.com/mongodb/node-mongodb-native
+* http://mongodb.github.io/node-mongodb-native/

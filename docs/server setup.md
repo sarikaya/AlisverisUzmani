@@ -8,7 +8,8 @@
           "version": "0.0.1",
           "private": true,
           "dependencies": {
-            "express": "3.x"
+            "express": "3.x",
+            "mongodb": "*"
           }
         }
 
