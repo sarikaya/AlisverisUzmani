@@ -8,21 +8,20 @@
 
 apt-mirror-pick 'us'
 
-# Install Yeoman (node package)
-# if [ command -v yeoman >/dev/null 2>&1 ]
 if [ -d /vagrant/dist ]
 then
     echo 'vagrant boot.sh is skipped'
     echo 'because there is a /vagrant/dist folder'
 else
     echo 'boot.sh is running now'
+    echo 'because there is not a /vagrant/dist folder'
     
     cd /vagrant
     
     apt-packages-update
     
-    
-    ########### Compass ############### // FIXME: it is not needed
+    echo '############ commpass ###############################################'
+    # FIXME: it is not needed
     apt-packages-install ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 rake rbenv
 
     #curl -L get.rvm.io | bash -s stable --auto
@@ -38,7 +37,7 @@ else
         sudo gem install compass
     fi
     
-    ############# yo dependencies ####################
+    echo '############# yo dependencies #######################################'
     apt-packages-install software-properties-common python-software-properties python g++ make build-essential git-core python curl
 
     # Install Yeoman and dependencies 
@@ -53,7 +52,7 @@ else
 
 
 
-    ############# nodejs ##################
+    echo '############# nodejs ################################################'
     apt-packages-ppa 'chris-lea/node.js'
     apt-packages-update
     apt-packages-install nodejs
@@ -65,7 +64,7 @@ else
     sudo npm install
 
 
-    #########  mongodb  ############
+    echo '#########  mongodb  #################################################'
 
     apt-packages-repository 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' '7F0CEB10'
     apt-packages-update
@@ -80,10 +79,10 @@ else
     
 
 
-    ######### yeoman #############
+    echo '######### yeoman ####################################################'
     sudo npm install -g yo karma grunt-cli  bower generator-angular
 
-    ############# PhantomJS ###############
+    echo '############# PhantomJS #############################################'
     # PhantomJS - see: http://phantomjs.org/download.html & http://phantomjs.org/build.html
     # 32-bit - https://phantomjs.googlecode.com/files/phantomjs-1.9.1-linux-i686.tar.bz2
    
