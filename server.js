@@ -50,55 +50,103 @@ MongoClient.connect(SETTINGS.mongo.connection_URI, SETTINGS.mongo.options, funct
     // ## HANDLERS #############################################################
 
     app.post('/product', function(req, res){    
-      // fake inputs
-      // each user send barcode and location in each query
-      var location = {
-        long: 29.014355,
-        lat: 41.022476
-      }
-      var barcode = "1";
-      // TODO: get real inputs
-      // HINT: req.body is posted json
+    
+        // fake inputs
+        // each user send barcode and location in each query
+        var location = {
+            long: 29.014355,
+            lat: 41.022476
+        }
+        var barcode = "1";
+        // TODO: get real inputs
+        // HINT: req.body is posted json
       
       
-     branchesCollection.find({
-      "location": {
-        $geoWithin : {
-          $centerSphere : [[location.long, location.lat], SETTINGS.radius/6371]
-        } //approximate radius of the earth is 6371 km
-      }
-    }).toArray(function(err, branches) {
-        var priceList_ids = [];
-        var branchesDict = {};  // FIXME: find good name
-        branches.forEach(function(branch) {
-            priceList_ids.push(branch.priceList_id);
-            branchesDict[branch.priceList_id] = { 'location': branch.location.coordinates,
-                                                  'chainName': branch.chainName,
-                                                  'branchName': branch.branchName
-                                                };
-                                                
-        });
-    }); 
-      
-      
-      
-      
-      // fake output
-      // TODO: use real outputs
-      var data = {};
-      data.productInfo = {
-        "imageSrc": "images/main.jpg",
-        "name": "ÜLKER ÇİKOLATALI GOFRET 38 GR"
-      };
+        branchesCollection.find({
+          "location": {
+            $geoWithin : {
+              $centerSphere : [[location.long, location.lat], SETTINGS.radius/6371]
+            } //approximate radius of the earth is 6371 km
+          }
+        }).toArray(function(err, branches) {
+            var priceList_ids = [];
+            var branchesDict = {};  // FIXME: find good name
+            branches.forEach(function(branch) {
+                priceList_ids.push(branch.priceList_id);
+                branchesDict[branch.priceList_id] = { 'location': branch.location.coordinates,
+                                                      'chainName': branch.chainName,
+                                                      'branchName': branch.branchName
+                                                    };                                                 
+            });
 
-      data.prices = [
-        {"chainName": "BİM", "branchName": "Bulgurlu", "price": 0.45, "here": true},
-        {"chainName": "A 101", "branchName": "Bulgurlu", "price": 0.45},
-        {"chainName": "Şok", "branchName": "Bulgurlu", "price": 0.57}
-      ];
+            productsCollection.aggregate(
+                // return documents with given barcode
+                { $match: {"barcode": barcode } }, 
+
+                // generate documents for each element of prices
+                // each document is identical except for the value of the prices field.
+                // Each value of prices is one of the values in the original prices array.
+                { $unwind: '$prices' },
+                
+                // return documents where price.priceList_id is in the priceList_ids
+                { $match: {'prices.priceList_id': {$in: priceList_ids}} }, 
+                
+                // sort prices by ascending order
+                { $sort : {'prices.price': 1} },
+                
+                // group documents by name and imageSrc which is identical.
+                // because of that it returns one document with grouped prices array
+                { $group: {
+                    "_id": {'name': '$name', 'imageSrc': '$imageSrc'}, 
+                    "prices": { $push: '$prices' }
+                } },
+                
+                // remove _id and rename some keys
+                { $project : {
+                    '_id': 0,
+                    'productInfo': {
+                        'name': '$_id.name',
+                        'imageSrc': '$_id.imageSrc'
+                    },
+                    'prices': 1
+                } },
+                // return results to the callback function
+                function(err, results) {
+                    if (!err) {
+                        var response = results[0];
+                        var i = 0;
+                        response.prices.forEach(function(price) {
+                            var p = branchesDict[price.priceList_id]; // FIXME: find good name
+                            p.price = price.price;
+                            response.prices[i] = p;
+                            i++;
+                        });
+                        console.log(response);
+                    } else {
+                        console.log("aggregate size is bigger than 16mb", err);
+                    }
+                }
+            );
 
 
-      res.send(data);
+        });      
+      
+        // fake output
+        // TODO: use real outputs
+        var data = {};
+        data.productInfo = {
+            "imageSrc": "images/main.jpg",
+            "name": "ÜLKER ÇİKOLATALI GOFRET 38 GR"
+        };
+
+        data.prices = [
+            {"chainName": "BİM", "branchName": "Bulgurlu", "price": 0.45, "here": true},
+            {"chainName": "A 101", "branchName": "Bulgurlu", "price": 0.45},
+            {"chainName": "Şok", "branchName": "Bulgurlu", "price": 0.57}
+        ];
+
+
+        res.send(data);
     });
 
     // ## END OF HANDLERS ######################################################
@@ -106,5 +154,3 @@ MongoClient.connect(SETTINGS.mongo.connection_URI, SETTINGS.mongo.options, funct
     app.listen(SETTINGS.port);
     console.log('Listening on port', SETTINGS.port);
 });
-
-
