@@ -47,8 +47,16 @@ MongoClient.connect(SETTINGS.mongo.connection_URI, SETTINGS.mongo.options, funct
 
     // ## HANDLERS #############################################################
 
-    app.post('/product', function(req, res){
-
+    app.post('/product', function(req, res){    
+      // fake inputs
+      // each user send barcode and location in each query
+      var location = {
+        long: 29.123454,
+        lat: 41.354322
+      }
+      var barcode = "1";
+      // TODO: get real inputs
+      
       // HINT: req.body is posted json
       var data = {};
       data.productInfo = {
