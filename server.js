@@ -49,7 +49,7 @@ MongoClient.connect(SETTINGS.mongo.connection_URI, SETTINGS.mongo.options, funct
 
     // ## HANDLERS #############################################################
 
-    app.post('/product', function(req, res){    
+    app.post('/product', function(req, resp){    
     
         // fake inputs
         // each user send barcode and location in each query
@@ -62,6 +62,8 @@ MongoClient.connect(SETTINGS.mongo.connection_URI, SETTINGS.mongo.options, funct
         // HINT: req.body is posted json
       
       
+        // TODO: use location for near locations with different chainName
+        // TODO: use aggeration framework for generating branchesDict
         branchesCollection.find({
           "location": {
             $geoWithin : {
@@ -69,14 +71,24 @@ MongoClient.connect(SETTINGS.mongo.connection_URI, SETTINGS.mongo.options, funct
             } //approximate radius of the earth is 6371 km
           }
         }).toArray(function(err, branches) {
+            /* branches consist of documents, such as 
+            {
+              location: {{ "type": "Point", "coordinates": [long, lat] }},
+              chainName: string,
+              branchName: string,
+              priceList_id: uuid
+            }
+            */
+        
             var priceList_ids = [];
             var branchesDict = {};  // FIXME: find good name
             branches.forEach(function(branch) {
                 priceList_ids.push(branch.priceList_id);
-                branchesDict[branch.priceList_id] = { 'location': branch.location.coordinates,
-                                                      'chainName': branch.chainName,
-                                                      'branchName': branch.branchName
-                                                    };                                                 
+                branchesDict[branch.priceList_id] = { 
+                    'location': branch.location.coordinates,
+                    'chainName': branch.chainName,
+                    'branchName': branch.branchName
+                };
             });
 
             productsCollection.aggregate(
@@ -113,40 +125,21 @@ MongoClient.connect(SETTINGS.mongo.connection_URI, SETTINGS.mongo.options, funct
                 // return results to the callback function
                 function(err, results) {
                     if (!err) {
-                        var response = results[0];
+                        var responseData = results[0];
                         var i = 0;
-                        response.prices.forEach(function(price) {
+                        responseData.prices.forEach(function(price) {
                             var p = branchesDict[price.priceList_id]; // FIXME: find good name
                             p.price = price.price;
-                            response.prices[i] = p;
+                            responseData.prices[i] = p;
                             i++;
                         });
-                        console.log(response);
+                        resp.send(responseData);
                     } else {
                         console.log("aggregate size is bigger than 16mb", err);
                     }
                 }
             );
-
-
-        });      
-      
-        // fake output
-        // TODO: use real outputs
-        var data = {};
-        data.productInfo = {
-            "imageSrc": "images/main.jpg",
-            "name": "ÜLKER ÇİKOLATALI GOFRET 38 GR"
-        };
-
-        data.prices = [
-            {"chainName": "BİM", "branchName": "Bulgurlu", "price": 0.45, "here": true},
-            {"chainName": "A 101", "branchName": "Bulgurlu", "price": 0.45},
-            {"chainName": "Şok", "branchName": "Bulgurlu", "price": 0.57}
-        ];
-
-
-        res.send(data);
+        });
     });
 
     // ## END OF HANDLERS ######################################################
