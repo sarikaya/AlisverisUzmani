@@ -25,6 +25,7 @@ angular.module('asistanApp', [])
             function onScanError(error) {
               // TODO: when there is a error, redirect user to the search page for 
               // searching barcode no or name of product
+              return {}
             }
             // FIXME: route is not change again
             if (barcodeParam === "scanitnow") {              
@@ -38,11 +39,14 @@ angular.module('asistanApp', [])
                 }
               }, onScanError);
             }
-            
+            // TODO: get barcode.text to the barcode property of request
             // TODO: get geolocation fast (using some geolocation 30 min timeout cache)
-            // TODO: get the response promise by using barcodeParam, geolocatin etc...
-            // TODO: is resource called in every route change? or only once in the ctrlr
-            return $http.post('/product', {"barcode": barcodeParam, "lat": 12312, "long": 234234});
+            // TODO: send barcode.text, lat, long data to the server
+            return $http.post('/product', {
+              "barcode": '1',
+              "long": 29.014355,
+              "lat": 41.022476            
+            });
 
           }]
         }
@@ -52,7 +56,7 @@ angular.module('asistanApp', [])
         controller: 'TodoCtrl',
         resolve: {
           todos: function () {
-            // TODO: return from localstorage, and inject localstorage to the TodoCtrl
+            // TODO: return from localstorage, and inject localstorage to the TodoCtrl for deleting and adding
             return [{"text": "Süt"}, {"text": "Yumurta"}, {"text": "Bal"}]; 
           }
         }
