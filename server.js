@@ -10,7 +10,7 @@ var SETTINGS = {
     "port": 8000,
     "mongo": {
         // docs.mongodb.org/manual/reference/connection-string/ for more settings about URI
-        "connection_URI": "mongodb://localhost:27017/asistanDb",
+        "connection_URI": "mongodb://localhost:27017/assistantDb",
         "options": {
             "db": {
                 "native_parser": true
@@ -45,14 +45,6 @@ MongoClient.connect(SETTINGS.mongo.connection_URI, SETTINGS.mongo.options, funct
     // get collection pointers
     var branchesCollection = db.collection("branches");
     var productsCollection = db.collection("products");
-    
-    // ensure that indexes are ready
-    db.branches.ensureIndex({"location": "2dsphere"}, function(err) {
-        console.log("indexes of branches collection are ready");
-    });
-    db.products.ensureIndex({"barcode": 1, "prices.price": 1}, function(err) {
-        console.log("indexes of products collection are ready");
-    });
 
     // ## HANDLERS #############################################################
 
