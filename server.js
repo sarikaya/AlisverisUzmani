@@ -8,6 +8,7 @@ var express = require('express'),
 var SETTINGS = {
     "development": true,  // TODO: use app.env for "development" and "production"
     "port": 8000,
+    "radius": 1, // radius of location search in km
     "mongo": {
         // docs.mongodb.org/manual/reference/connection-string/ for more settings about URI
         "connection_URI": "mongodb://localhost:27017/assistantDb",
@@ -52,15 +53,32 @@ MongoClient.connect(SETTINGS.mongo.connection_URI, SETTINGS.mongo.options, funct
       // fake inputs
       // each user send barcode and location in each query
       var location = {
-        long: 29.123454,
-        lat: 41.354322
+        long: 29.014355,
+        lat: 41.022476
       }
       var barcode = "1";
       // TODO: get real inputs
       // HINT: req.body is posted json
       
       
-      
+     branchesCollection.find({
+      "location": {
+        $geoWithin : {
+          $centerSphere : [[location.long, location.lat], SETTINGS.radius/6371]
+        } //approximate radius of the earth is 6371 km
+      }
+    }).toArray(function(err, branches) {
+        var priceList_ids = [];
+        var branchesDict = {};  // FIXME: find good name
+        branches.forEach(function(branch) {
+            priceList_ids.push(branch.priceList_id);
+            branchesDict[branch.priceList_id] = { 'location': branch.location.coordinates,
+                                                  'chainName': branch.chainName,
+                                                  'branchName': branch.branchName
+                                                };
+                                                
+        });
+    }); 
       
       
       
