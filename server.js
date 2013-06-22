@@ -50,18 +50,13 @@ MongoClient.connect(SETTINGS.mongo.connection_URI, SETTINGS.mongo.options, funct
     // ## HANDLERS #############################################################
 
     app.post('/product', function(req, resp){    
-    
-        // fake inputs
-        // each user send barcode and location in each query
+        // TODO: each user must send barcode and location in each query. check it
+        // HINT: req.body is posted json from client
+        var barcode = req.body.barcode;
         var location = {
-            long: 29.014355,
-            lat: 41.022476
+            'long': req.body.long,
+            'lat': req.body.lat
         }
-        var barcode = "1";
-        // TODO: get real inputs
-        // HINT: req.body is posted json
-      
-      
         // TODO: use location for near locations with different chainName
         // TODO: use aggeration framework for generating branchesDict
         branchesCollection.find({
