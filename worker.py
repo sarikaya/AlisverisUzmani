@@ -20,8 +20,8 @@ db.branches.insert([
   },
   {
     "location": {"type": "Point", "coordinates": [29.014056, 41.020141]},
-    "chainName": "Şok-Doğancılar",
-    "branchName": "u",
+    "chainName": "Şok",
+    "branchName": "Şok-Doğancılar",
     "priceList_id": "2"
   },
   {
@@ -39,7 +39,7 @@ db.branches.insert([
   {
     "location": {"type": "Point", "coordinates": [29.07688379, 41.01901575]},
     "chainName": "A101",
-    "branchName": "b",
+    "branchName": "Bulgurlu Üsküdar İstanbul",
     "priceList_id": "4"
   },
   {
@@ -106,8 +106,8 @@ db.products.insert([
   }
 ])
 
-db.branches.create_index([("location", pymongo.GEOSPHERE)])
-db.products.create_index([("barcode", pymongo.ASCENDING),
+db.branches.ensure_index([("location", pymongo.GEOSPHERE)])
+db.products.ensure_index([("barcode", pymongo.ASCENDING),
                           ("prices.price", pymongo.ASCENDING)])
 
 # TODO: bson.ObjectId() for uuid
