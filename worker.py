@@ -21,13 +21,13 @@ db.branches.insert([
   {
     "location": {"type": "Point", "coordinates": [29.014056, 41.020141]},
     "chainName": "Şok",
-    "branchName": "Şok-Doğancılar",
+    "branchName": "Doğancılar Üsküdar İstanbul",
     "priceList_id": "2"
   },
   {
     "location": {"type": "Point", "coordinates": [29.010941, 41.022537]},
     "chainName": "Şok",
-    "branchName": "ŞOK-ŞEMSİPAŞA",
+    "branchName": "ŞEMSİPAŞA Üsküdar İstanbul",
     "priceList_id": "3"
   },
   {
@@ -109,6 +109,13 @@ db.products.insert([
 db.branches.ensure_index([("location", pymongo.GEOSPHERE)])
 db.products.ensure_index([("barcode", pymongo.ASCENDING),
                           ("prices.price", pymongo.ASCENDING)])
+# for fast sorting price, 
+# order of indexes are important.
+# first use important search field 
+# then narrow index by the other search field,
+# where the final component of the index is the sort field to 
+# maximize index efficiency.
+
 
 # TODO: bson.ObjectId() for uuid
 
@@ -117,4 +124,5 @@ db.products.ensure_index([("barcode", pymongo.ASCENDING),
 #       # TODO: create new collection for just checking priceList_ids easily
 # * insert new product if there is a new barcode in the products
 # * push priceList_id - price pair OR update price in the prices array of each product for given barcode.
+# * sort each prices array
 # * create indexes
