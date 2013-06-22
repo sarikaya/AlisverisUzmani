@@ -42,8 +42,17 @@ MongoClient.connect(SETTINGS.mongo.connection_URI, SETTINGS.mongo.options, funct
     }
     console.log("Connected to Database");
     
+    // get collection pointers
     var branchesCollection = db.collection("branches");
     var productsCollection = db.collection("products");
+    
+    // ensure that indexes are ready
+    db.branches.ensureIndex({"location": "2dsphere"}, function(err) {
+        console.log("indexes of branches collection are ready");
+    });
+    db.products.ensureIndex({"barcode": 1, "prices.price": 1}, function(err) {
+        console.log("indexes of products collection are ready");
+    });
 
     // ## HANDLERS #############################################################
 
@@ -56,8 +65,16 @@ MongoClient.connect(SETTINGS.mongo.connection_URI, SETTINGS.mongo.options, funct
       }
       var barcode = "1";
       // TODO: get real inputs
-      
       // HINT: req.body is posted json
+      
+      
+      
+      
+      
+      
+      
+      // fake output
+      // TODO: use real outputs
       var data = {};
       data.productInfo = {
         "imageSrc": "images/main.jpg",
