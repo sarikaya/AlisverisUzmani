@@ -124,7 +124,9 @@ MongoClient.connect(SETTINGS.mongo.connection_URI, SETTINGS.mongo.options, funct
                 } },
                 // return results to the callback function
                 function(err, results) {
-                    if (!err) {
+                    if (err) {
+                        console.log("aggregate size is bigger than 16mb", err);
+                    } else if ( results[0] ) {
                         var responseData = results[0];
                         var i = 0;
                         responseData.prices.forEach(function(price) {
@@ -135,7 +137,7 @@ MongoClient.connect(SETTINGS.mongo.connection_URI, SETTINGS.mongo.options, funct
                         });
                         resp.send(responseData);
                     } else {
-                        console.log("aggregate size is bigger than 16mb", err);
+                        resp.send(404); //FIXME: send something that means there is no results, but not error
                     }
                 }
             );
