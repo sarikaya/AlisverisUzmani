@@ -85,7 +85,6 @@ module.exports = function (grunt) {
         jshintrc: '.jshintrc'
       },
       all: [
-        'Gruntfile.js',
         '<%= yeoman.app %>/scripts/{,*/}*.js'
       ]
     },
@@ -291,7 +290,7 @@ module.exports = function (grunt) {
     'rev',
     'usemin'
   ]);
-  
+
   grunt.registerTask('default', ['build', 'compress:zip', 'phonegap-build:main']);
 
 };
