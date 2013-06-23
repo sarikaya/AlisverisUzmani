@@ -1,17 +1,20 @@
 'use strict';
 
 angular.module('asistanApp')
-  .controller('TodoCtrl', function ($scope, todos) {
-     $scope.todos = todos;
+  .controller('TodoCtrl', function ($scope, storage) {
+     var todos = $scope.todos = storage.get("todos") || [];
 
      $scope.addTodo = function() {
-       if ($scope.todoInput) {
-         $scope.todos.push({"text": $scope.todoInput});
+       var input = $scope.todoInput;
+       if (input) {
+         todos.push({"text": input});
+         storage.set("todos", todos);
          $scope.todoInput = '';
        }
      };
 
      $scope.removeTodo = function (index) {
-       $scope.todos.splice(index, 1);
+       todos.splice(index, 1);
+       storage.set("todos", todos);
      };
   });
