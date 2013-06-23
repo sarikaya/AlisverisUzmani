@@ -14,12 +14,7 @@ if (DEVELOP) {
     // ################ fake touch ##################### //
     load("components/jqmobi/jq.desktopBrowsers.js");
 
-    // ################cordova ready and barcodescanner# //
-
-    var e = document.createEvent('Events'); 
-    e.initEvent("deviceready");
-    document.dispatchEvent(e);
-
+    // ################ barcodescanner ################# //
 
     var barcode = {"text": "1", "cancelled": false, "format": "unknown"};
     var cordova = { "require": function() {
