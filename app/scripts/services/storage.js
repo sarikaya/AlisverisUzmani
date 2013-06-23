@@ -1,16 +1,16 @@
 'use strict';
 
 angular.module('asistanApp')
-  .factory('storage', function () {
+  .factory('storage', function (deviceReady) {
     return {
-      get: function (key) {
+      get: deviceReady(function (key) {
              return angular.fromJson(window.localStorage.getItem(key) || 'false');
-      },
-      set: function (key, value) {
+      }),
+      set: deviceReady(function (key, value) {
              window.localStorage.setItem(key, angular.toJson(value));
-      },
-      remove: function (key) {
+      }),
+      remove: deviceReady(function (key) {
                 window.localStorage.removeItem(key);
-      }
+      })
     };
   });
