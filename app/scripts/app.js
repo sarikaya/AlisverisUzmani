@@ -62,6 +62,10 @@ angular.module('asistanApp', [])
           }
         }
       })
+      .when('/scanner', {
+        templateUrl: 'views/scanner.html',
+        controller: 'ScannerCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
