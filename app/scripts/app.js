@@ -39,13 +39,13 @@ angular.module('asistanApp', [])
                 }
               }, onScanError);
             }
-            // TODO: get barcode.text to the barcode property of request
+            // TODO: send barcode.text as a barcode property of requests
             // TODO: get geolocation fast (using some geolocation 30 min timeout cache)
             // TODO: send barcode.text, lat, long data to the server
             return $http.post('/product', {
               "barcode": '1',
               "long": 29.014355,
-              "lat": 41.022476            
+              "lat": 41.022476
             });
 
           }]
@@ -56,7 +56,8 @@ angular.module('asistanApp', [])
         controller: 'TodoCtrl',
         resolve: {
           todos: function () {
-            // TODO: return from localstorage, and inject localstorage to the TodoCtrl for deleting and adding
+            // TODO: return from localstorage, and inject localstorage to the
+            //       TodoCtrl for deleting and adding
             return [{"text": "Süt"}, {"text": "Yumurta"}, {"text": "Bal"}]; 
           }
         }
