@@ -11,7 +11,7 @@ angular.module('asistanApp')
       if (barcode.cancelled) {
           onScanError();
       } else {
-        // TODO: use barcode.text. maybe barcode.format
+        // TODO: maybe you need barcode.format for different barcode types
         $location.path('/product/' + barcode.text);
       }
     }, onScanError);
