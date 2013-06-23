@@ -19,30 +19,32 @@ angular.module('asistanApp', [])
         templateUrl: 'views/product.html',
         controller: 'ProductCtrl',
         resolve: { // XXX: use inline annotation temporarily until ngmin implement it
-          resp: ['$route', '$http', 'geolocation', function ($route, $http, geolocation) {
+          resp: ['$route', '$http', '$q', 'geolocation', function ($route, $http, $q, geolocation) {
             var barcode = $route.current.params.barcode, long, lat;
+            var deferred = $q.defer();
             
             geolocation.getCurrentPosition(function (position) {
-              // TODO: send these to the server            
-              position.coords.longitude,
-              position.coords.latitude;
+              deferred.resolve({
+                "long": position.coords.longitude,
+                "lat": position.coords.latitude
+              });
             }, function (error) {
               // TODO: handle error cases
               // error.code == error.PERMISSION_DENIED;
               // error.code == error.POSITION_UNAVAILABLE;
               // error.code == error.TIMEOUT;
+              // deferred.reject();
             }, {
               "maximumAge": 10*60*1000, // get cached data maximum 10 minute second ago
               "timeout": 1*60*1000 // timeout after 1 minute. which is throw error
             });
             
-            // XXX: delete these when send lat, long data to the server
-            long = 29.014355;
-            lat = 41.022476;
-            return $http.post('/product', {
-              "barcode": barcode,
-              "long": long,
-              "lat": lat
+            return deferred.promise.then(function(coords) {
+                return $http.post('/product', {
+                  "barcode": barcode,
+                  "long": coords.long,
+                  "lat": coords.lat
+                });
             });
 
           }]
@@ -64,7 +66,17 @@ angular.module('asistanApp', [])
 angular.module('asistanApp')
   .run(function ($rootScope) {
 
-    // TODO: write loading screen between routechange start and success
+    $rootScope.$on("$routeChangeStart", function (event, next, current) {
+        $.ui.showMask('Lütfen bekleyiniz');
+    });
+    
+    $rootScope.$on("$routeChangeSuccess", function (event, current, previous) {
+        $.ui.hideMask();
+    });
+    
+    $rootScope.$on("$routeChangeError", function (event, current, previous, rejection) {
+        console.log("ROUTE CHANGE ERROR: " + rejection);
+    });
 
     $rootScope.safeApply = function(fn) {
       var phase = this.$root.$$phase;
