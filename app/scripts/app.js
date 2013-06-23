@@ -34,14 +34,7 @@ angular.module('asistanApp', [])
       })
       .when('/todo', {
         templateUrl: 'views/todo.html',
-        controller: 'TodoCtrl',
-        resolve: {
-          todos: function () {
-            // TODO: return from localstorage, and inject localstorage to the
-            //       TodoCtrl for deleting and adding
-            return [{"text": "Süt"}, {"text": "Yumurta"}, {"text": "Bal"}]; 
-          }
-        }
+        controller: 'TodoCtrl'
       })
       .when('/scanner', {
         templateUrl: 'views/scanner.html',
