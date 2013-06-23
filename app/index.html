@@ -66,6 +66,15 @@
 
     <!-- ignore these files in the build-->
     <script src="scripts/develop.js"></script>
+    <script>
+    if (DEVELOP) {
+        window.setTimeout(function() {
+            var e = document.createEvent('Events'); 
+            e.initEvent("deviceready"); 
+            document.dispatchEvent(e);
+        }, 50);
+    }
+    </script>
 
     <!-- build:js scripts/scripts.js -->    
     <script src="scripts/app.js"></script>
