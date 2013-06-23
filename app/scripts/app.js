@@ -19,14 +19,30 @@ angular.module('asistanApp', [])
         templateUrl: 'views/product.html',
         controller: 'ProductCtrl',
         resolve: { // XXX: use inline annotation temporarily until ngmin implement it
-          resp: ['$route', '$http', function ($route, $http) {
-            var barcode = $route.current.params.barcode;
-            // TODO: get geolocation fast (using some geolocation 30 min timeout cache)
-            // TODO: send lat, long data to the server
+          resp: ['$route', '$http', 'geolocation', function ($route, $http, geolocation) {
+            var barcode = $route.current.params.barcode, long, lat;
+            
+            geolocation.getCurrentPosition(function (position) {
+              // TODO: send these to the server            
+              position.coords.longitude,
+              position.coords.latitude;
+            }, function (error) {
+              // TODO: handle error cases
+              // error.code == error.PERMISSION_DENIED;
+              // error.code == error.POSITION_UNAVAILABLE;
+              // error.code == error.TIMEOUT;
+            }, {
+              "maximumAge": 10*60*1000, // get cached data maximum 10 minute second ago
+              "timeout": 1*60*1000 // timeout after 1 minute. which is throw error
+            });
+            
+            // XXX: delete these when send lat, long data to the server
+            long = 29.014355;
+            lat = 41.022476;
             return $http.post('/product', {
               "barcode": barcode,
-              "long": 29.014355,
-              "lat": 41.022476
+              "long": long,
+              "lat": lat
             });
 
           }]

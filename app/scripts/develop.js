@@ -26,6 +26,21 @@ if (DEVELOP) {
                                  } 
                     };
 
+    // ################ geolocation ################# //
+    var position = {
+      "coords": {
+        "longitude": 29.014355,
+        "latitude": 41.022476,
+      }
+    };
+    navigator = {
+      "geolocation":{
+        "getCurrentPosition": function(success) {
+            success(position)
+        }
+      }
+    };
+
 }
 
         /*
