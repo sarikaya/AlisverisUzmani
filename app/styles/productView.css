@@ -17,3 +17,8 @@
 #productView .list .amount {
     color: #08c;
 }
+
+#productView .list .shopName {
+    width: 65%;
+}
+

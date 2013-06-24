@@ -2,17 +2,19 @@
     margin: 10px 0 10px 0;
 }
 
-#todoView #todoText {
+#todoView #todoInputWrapper {
+    padding-right: 60px;
+}
+
+#todoView #todoInput {
    height: 48px;
    font-size: 18px;
-   width: 80%;
+   width: 100%;
 }
 #todoView #todoButton {
    height: 48px;
    font-size: 18px;
 }
-#todoView .dot {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+#todoView .todoText {
+    width: 65%;
 }
