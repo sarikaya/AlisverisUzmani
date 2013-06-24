@@ -5,6 +5,12 @@
   display: none !important;
 }
 
+* { 
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 body {
     padding-left: 0;
     padding-right: 0;
@@ -107,4 +113,21 @@ ul .icon {
 
 .list {
     border-top: 1px solid #08c;
+}
+
+.list .item {
+    margin-right: 50px;        
+}
+
+.list .action {
+    float: right;
+    width: 50px;
+}
+
+.truncated {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: inline-block;
+	word-wrap: break-word;
 }
