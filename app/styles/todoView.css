@@ -11,3 +11,8 @@
    height: 48px;
    font-size: 18px;
 }
+#todoView .dot {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

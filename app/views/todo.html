@@ -5,7 +5,7 @@
         <button type="submit" id="todoButton" class="btn btn-large pull-right"> <i class="icon-plus icon-large"></i></button>
     </form>
     <ul class="list">
-        <li ng-repeat="todo in todos"><a>
+        <li ng-repeat="todo in todos"><a class="dot">
             {{todo.text}}
             <b id="close" class="icon icon-remove big pull-right" ng-tap="removeTodo($index)"></b>
         </a></li>
