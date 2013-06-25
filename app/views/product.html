@@ -1,0 +1,23 @@
+<div id="productView">
+
+    <div id="product" class="padded">
+        <img id="productImage" ng-src="{{productInfo.imageSrc}}" class="img-rounded" />
+        <h4 id="productName" class="truncated">{{productInfo.name}}</h4>
+    </div>
+
+    <div class="padded"> 
+        <h3> Fiyatlar </h3>
+    </div>
+
+    <ul class="list">
+        <li ng-repeat="price in prices"><a>
+        <div class="truncated shopName">
+            {{price.chainName}} 
+            <i class="muted"> - {{price.branchName}}</i>
+        </div>
+        <i class="pull-right amount"> {{price.price}} TL</i>
+        <b ng-show="price.here" class="icon icon-map-marker icon-2x pull-right"></b>
+        </a></li>
+    </ul>
+
+</div>

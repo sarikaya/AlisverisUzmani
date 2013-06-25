@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Controller: TodoCtrl', function () {
 
   // load the controller's module
   beforeEach(module('asistanApp'));
 
-  var MainCtrl,
+  var TodoCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
+    TodoCtrl = $controller('TodoCtrl', {
       $scope: scope
     });
   }));

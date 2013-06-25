@@ -1,46 +1,84 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
+  <head>  
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title></title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    
     <!-- build:css styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/bootstrap.css" />
+    <link rel="stylesheet" href="styles/font-awesome.css" />
+    <link rel="stylesheet" href="styles/jq.ui.css" title="default" />
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/mainView.css">
+    <link rel="stylesheet" href="styles/dealsView.css">
+    <link rel="stylesheet" href="styles/productView.css">
+    <link rel="stylesheet" href="styles/todoView.css">
     <!-- endbuild -->
+    
+    <!-- phone gap files here -->    
+    <script src="phonegap.js"></script>
+    <script src="barcodescanner.js"></script>
   </head>
-  <body ng-app="vagrantApp">
-    <!--[if lt IE 7]>
-      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-    <![endif]-->
+  <body ng-app="asistanApp">
+  
+  
+    <!-- Your app lives inside this div -->
+    <div id="jQUi"> 
+        <!-- TODO: use phonegap splashscreen or jq.ui's -->
 
-    <!--[if lt IE 9]>
-      <script src="components/es5-shim/es5-shim.js"></script>
-      <script src="components/json3/lib/json3.min.js"></script>
-    <![endif]-->
+        <!-- TODO: add customized header to the all views, from $scope or $route or $rootscope-->
+        <div id="header" class="padded">
+            <h1 id="pageTitle">Alışveriş Asistanı</h1>
+            <a class="icon big icon-shopping-cart"></a>
+        </div>
 
-    <!-- Add your site or application content here -->
-    <div class="container" ng-view></div>
+        <!-- The content div is where all your panels live. -->
+        <div id="content">
+            <!-- Panels are the individual pages/content area for your app -->
+            <div id="view" class="panel" selected="true">
+                <div ng-view></div>
+            </div>
+        </div>
 
-    <script src="components/angular/angular.js"></script>
-    <script src="components/angular-resource/angular-resource.js"></script>
 
-    <!-- build:js scripts/scripts.js -->
+        <!-- The footer (bottom navbar).  Add additional tabs here
+        The footer is a persistant navigation bar at the bottom -->
+        <div id="navbar">
+            <a class="icon icon-tag" href="#/" data-ignore="true">FIRSAT</a>
+            <a class="icon icon-camera" href="#/scanner" data-ignore="true">OKU</a>
+            <a class="icon icon-list-ul" href="#/todo" data-ignore="true">LİSTE</a>
+        </div>
+    </div>
+
+    <!-- components -->
+    <script src="components/jqmobi/jq.mobi.min.js"></script>
+    <script src="components/jqmobi/jq.ui.min.js"></script>
+    <script>
+        // following options work in the phone
+        var DEVELOP = false; 
+    </script>
+    <script src="components/angular/angular.min.js"></script>
+    <!-- end -->
+
+    <!-- ignore these files in the build-->
+    <script src="scripts/develop.js"></script>
+
+    <!-- build:js scripts/scripts.js -->    
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/deals.js"></script>
+    <script src="scripts/controllers/product.js"></script>
+    <script src="scripts/controllers/todo.js"></script>
+    <script src="scripts/services/deviceReady.js"></script>
+    <script src="scripts/services/geolocation.js"></script>
+    <script src="scripts/services/barcodeScanner.js"></script>
+    <script src="scripts/directives/ngTap.js"></script>
+    <script src="scripts/controllers/scanner.js"></script>
+    <script src="scripts/services/storage.js"></script>
     <!-- endbuild -->
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
-    </script>
   </body>
 </html>

@@ -1,0 +1,16 @@
+<div id="todoView">
+
+    <form ng-submit="addTodo()" class="padded" id="todoForm">
+        <button type="submit" id="todoButton" class="btn btn-large pull-right"> <i class="icon-plus icon-large"></i></button>
+        <div id="todoInputWrapper">
+            <input type="text" id="todoInput" ng-model="todoInput" class="input-xlarge" placeholder="Ürünleri giriniz">
+        </div>
+    </form>
+    <ul class="list">
+        <li ng-repeat="todo in todos"><a>
+            <div class="truncated todoText"> {{todo.text}} </div>
+            <b id="close" class="icon icon-remove big pull-right" ng-tap="removeTodo($index)"></b>
+        </a></li>
+    </ul>
+
+</div>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.phonegap.asistan"
+        version   = "0.0.1">
+
+    <name>Asistant</name>
+
+    <description>
+        description
+    </description>
+
+    <author href="https://www.alisverisasistani.com" email="alisveris.asistani@gmail.com">
+        sahitler 
+    </author>
+    
+    <!--
+        Enable individual API permissions by defining each here.
+        The 'device' permission is required for the 'deviceready' event.
+    -->
+    <feature name="http://api.phonegap.com/1.0/device" />
+	<feature name="http://api.phonegap.com/1.0/camera"/>
+	<feature name="http://api.phonegap.com/1.0/geolocation"/>
+	<feature name="http://api.phonegap.com/1.0/network"/>
+    
+    <preference name="orientation" value="portrait" />
+    <preference name="android-minSdkVersion" value="6" />
+    <preference name="android-maxSdkVersion" value="17" />
+
+    <gap:plugin name="BarcodeScanner" />
+</widget>

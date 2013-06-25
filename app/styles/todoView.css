@@ -1,0 +1,20 @@
+#todoView #todoForm {
+    margin: 10px 0 10px 0;
+}
+
+#todoView #todoInputWrapper {
+    padding-right: 60px;
+}
+
+#todoView #todoInput {
+   height: 48px;
+   font-size: 18px;
+   width: 100%;
+}
+#todoView #todoButton {
+   height: 48px;
+   font-size: 18px;
+}
+#todoView .todoText {
+    width: 65%;
+}
