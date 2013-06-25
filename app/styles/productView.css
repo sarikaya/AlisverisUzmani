@@ -12,6 +12,8 @@
 #productView #productName {
     height: 100px;
     padding: 10px;
+    display: block;
+    white-space: normal;
 }
 
 #productView .list .amount {
