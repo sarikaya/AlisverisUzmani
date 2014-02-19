@@ -50,7 +50,7 @@ products collection:
 
 In branches collection, each branch has a geographic index named location. Each branch has also name of the chain and branch. Each branch has also associated with price list that used in this branch.
 
-In products collection, each product has a unique barcode. Each product has also name and address of the image. The most important part of the data is prices list. Each list item consist of priceList_id and price. Price list id shows which price of the product is belong to which price list.
+In products collection, each product has a unique barcode. Each product has also name and address of the image. The most important part of the data is prices list. Each list item consist of `priceList_id` and price. Price list id shows which price of the product is belong to which price list.
 
 For finding list of nearest branch-price pairs for given product barcode and location of user.
 Following queries running against database.
@@ -113,8 +113,12 @@ If you are in the development mode open the `localhost:8080` in the browser of t
 
 If you are not in the development mode, install the [nodejs](http://nodejs.org/) and [mongodb](http://www.mongodb.org/) to the server online. Then change the address of the server in the `app/scripts/app.js`.
 
-## documentation
+## Documentation
 
 In the `docs` folder, there is some detailed documentation about project.
 
 You can also follow links in this file for furthermore information.
+
+## License
+
+Copyright (C) 2013 Abdurrahman NAMLI. It is distributed under the GNU General Public License version 2 - see the accompanying LICENSE file for more details.
