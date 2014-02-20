@@ -113,6 +113,8 @@ If you are in the development mode open the `localhost:8080` in the browser of t
 
 If you are not in the development mode, install the [nodejs](http://nodejs.org/) and [mongodb](http://www.mongodb.org/) to the server online. Then change the address of the server in the `app/scripts/app.js`.
 
+There is a binaries in the `binaries` folder.
+
 ## Documentation
 
 In the `docs` folder, there is some detailed documentation about project.
