@@ -1,8 +1,8 @@
 # Alışveriş Uzmanı
 
-This location based app lists the nearest stores which have searched product with respect to user's location.
+This location based app lists prices of nearest stores which have searched product with respect to user's location.
 
-First user scan a barcode of the product. Then app lists the nearest stores which have scanned product with respect to user's location.
+First user scan a barcode of the product. Then app lists prices of nearest stores which have scanned product with respect to user's location.
 
 App has also has shopping list and discounted products features.
 
